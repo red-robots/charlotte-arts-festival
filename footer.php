@@ -56,6 +56,26 @@
       //   $('#fixed-elements').removeClass('viewing');
       // }
 
+      
+
+      $('.grid-item figure').each(function(){
+        if ($(this).isInViewport()) {
+          $(this).addClass('viewing');
+          /* squiggy lines */
+          // $('.viewing .squiggy1 span').each(function(k){
+          //   var i = k+1;
+          //   var duration = 80 * i;
+          //   var target = $(this);
+          //   setTimeout(function(){
+          //     target.show();
+          //   },duration);
+          // });
+
+        } else {
+          $(this).removeClass('viewing');
+        }
+      });
+
     });
           
     })();

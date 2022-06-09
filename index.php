@@ -77,41 +77,53 @@
                     </div>
                 </div>
                 <div class="col-right">
-                  <div class="images grid" id="imagecol">
+                  <div class="images grid grid-no-js" id="imagecol">
                     <div class="grid-sizer"></div>
-                    <div class="grid-item img1 right">
-                      <figure class="fig1" data-scroll data-scroll-speed="2" data-scroll-repeat data-scroll-target="#imagecol">
+                    <div class="grid-item img1 right has-squiggy">
+                      <figure class="fig1" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
+                        <?php /* SQUIGGY1 */ include( locate_template('squiggy/1/action.php') ); ?>
                         <img src="<?php echo IMAGES_URL ?>/demo/1.jpg" alt="" style="transition-delay: 0.2s;">
                       </figure>
                     </div>
-                    <div class="grid-item img2 left">
+                    <div class="grid-item img2 left has-squiggy-next next">
                       <figure class="fig2" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
                         <img src="<?php echo IMAGES_URL ?>/demo/2.jpg" alt="" style="transition-delay: 0.3s;">
                       </figure>
                     </div>
-                    <div class="grid-item img3 right">
+                    <div class="grid-item img3 right next">
                       <figure class="fig3" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
                         <img src="<?php echo IMAGES_URL ?>/demo/3.jpg" alt="" style="transition-delay: 0.4s;">
                       </figure>
                     </div>
-                    <div class="grid-item img4 middle">
+                    <div class="grid-item img4 middle next">
                       <figure class="fig4" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
                         <img src="<?php echo IMAGES_URL ?>/demo/4.jpg" alt="" style="transition-delay: 0.5s;">
                       </figure>
                     </div>
-                    <div class="grid-item img5 has-text">
+                    <div class="grid-item img5 has-text has-squiggy">
                       <figure class="fig5" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
-                        <img src="<?php echo IMAGES_URL ?>/demo/5.jpg" alt="">
+                        <?php /* SQUIGGY2 */ include( locate_template('squiggy/2/action.php') ); ?>
+                        <img src="<?php echo IMAGES_URL ?>/demo/7.jpg" alt="">
                       </figure>
                     </div>
-                    <div class="grid-item img6 left">
+                    <div class="grid-item img6 left has-squiggy-next next">
                       <figure class="fig6" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
                         <img src="<?php echo IMAGES_URL ?>/demo/6.jpg" alt="">
                       </figure>
                     </div>
-                    <div class="grid-item img7 right">
-                      <figure class="fig3" data-scroll data-scroll-speed="4" data-scroll-target="#imagecol">
-                        <img src="<?php echo IMAGES_URL ?>/demo/3.jpg" alt="">
+                    <div class="grid-item img7 right next">
+                      <figure class="fig3" data-scroll data-scroll-speed="3" data-scroll-target="#imagecol">
+                        <img src="<?php echo IMAGES_URL ?>/demo/5.jpg" alt="">
+                      </figure>
+                    </div>
+                    <div class="grid-item img8 next before-last">
+                      <figure class="fig5" data-scroll data-scroll-speed="3" data-scroll-repeat data-scroll-target="#imagecol">
+                        <img src="<?php echo IMAGES_URL ?>/demo/8.jpg" alt="">
+                      </figure>
+                    </div>
+                    <div class="grid-item img9 next last">
+                      <figure class="fig5" data-scroll data-scroll-speed="3.7" data-scroll-repeat data-scroll-target="#imagecol">
+                        <img src="<?php echo IMAGES_URL ?>/demo/9.jpg" alt="">
                       </figure>
                     </div>
                     <div class="grid-item grid-item--width2"></div>
