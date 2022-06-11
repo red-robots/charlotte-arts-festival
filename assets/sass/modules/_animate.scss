@@ -3678,12 +3678,12 @@
 @keyframes bottom-to-top {
   from {
     opacity: 0;
-    transform: translateX(-5%) translateY(70%);
+    transform: translateY(70%);
   }
 
   to {
     opacity: 1;
-    transform: translateX(0%) translateY(0%);
+    transform: translateY(0%);
   }
 }
 

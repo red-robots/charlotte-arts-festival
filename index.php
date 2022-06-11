@@ -26,8 +26,8 @@
                 <div class="banner-text">
                   <div class="inner">
                     <div class="t1">CHARLOTTE INTERNATIONAL</div>
-                    <div class="t2"><span class="animate-bottom-top-up" style="animation-delay:.4s">ARTS</span> <span class="animate-bottom-top-up" style="animation-delay:.9s">FESTIVAL</span></div>
-                    <div class="t3" style="animation-delay:.4s">9.16 - 10.2 2022</div>
+                    <div class="t2"><span class="animate-bottom-top-up" style="animation-delay:.4s">ARTS</span> <span class="animate-bottom-top-up" style="animation-delay:.95s">FESTIVAL</span></div>
+                    <div class="t3" style="animation-delay:.6s">9.16 - 10.2 2022</div>
                   </div>
                 </div>
                 <div id="countdown" class="animated fadeIn" style="animation-delay:1s">
