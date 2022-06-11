@@ -15,12 +15,14 @@ function bellaworks_scripts() {
 			false 
 		);
 
-    // wp_enqueue_script( 
-    //  'bellaworks-blocks', 
-    //  get_template_directory_uri() . '/assets/js/vendor.min.js', 
-    //  array(), '10092021', 
-    //  true 
-    // );
+    
+
+    wp_enqueue_script( 
+     'bellaworks-blocks', 
+     get_template_directory_uri() . '/assets/js/vendor.min.js', 
+     array(), '10092021', 
+     true 
+    );
 
 	wp_enqueue_script( 
 			'vimeo-player', 
@@ -46,13 +48,6 @@ function bellaworks_scripts() {
 	wp_localize_script( 'bellaworks-custom', 'frontajax', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' )
 	));
-
-	// wp_enqueue_script( 
- //    'swiper-scripts', 
- //    get_template_directory_uri() . '/assets/js/vendor/swiper-bundle.min.js', 
- //    array(), '20220412', 
- //    true 
- //  );
 
 	wp_enqueue_script( 
 		'font-awesome', 

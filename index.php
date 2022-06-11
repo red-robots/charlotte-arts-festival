@@ -58,7 +58,7 @@
       <?php get_template_part('parts/home-tabs');  ?>
     </div>
 
-    <section id="homerow1" class="c-section -fixed" data-scroll-section data-persistent>
+    <section id="homerow1" class="section c-section -fixed" data-scroll-section data-persistent>
         <div class="hometabs-container">
           <?php get_template_part('parts/home-tabs');  ?>
         </div>
@@ -134,9 +134,121 @@
         </div>
     </section>
 
-    <section id="homerow2" class="c-section -fixed events-section" data-scroll-section data-persistent>
+
+    <section id="events-section" class="section c-section -fixed events-section" data-scroll-section data-persistent>
+      <h2 id="events-title" class="rotated-title">EVENTS</h2>
+      <div class="section-content">
+        <div class="flex-wrap">
+          <div class="flexcol fleft">
+          </div>
+          <div class="flexcol fright">
+            <div class="circular-text">
+              <span id="circular">CAN'T MISS EVENTS.CAN'T MISS EVENTS.</span>
+              <span id="circular-middle"><span id="eventType">T</span></span>
+            </div>
+            <div class="featured-events">
+              
+
+              <div class="swiper swiper-events">
+                <div class="swiper-wrapper">
+
+                  <div class="swiper-slide">
+                    <div class="event" data-event-type="T">
+                      <h2 class="title">Architects of Air 1</h2>
+                      <div class="tag">Ticketed</div>
+                      <div class="info">
+                        <div class="date">Sep 23 – Oct 1 | 3pm – 9pm</div>
+                        <div class="loc">Location Name Here</div>
+                      </div>
+                      <div class="summary">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus est in enim accumsan, eget lacinia ex dapibus. Aenean rutrum maximus egest</p>
+                      </div>
+
+                      <div class="cta-button">
+                        <a href="#" class="button"><span>More Info</span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event" data-event-type="P">
+                      <h2 class="title">Architects of Air 2</h2>
+                      <div class="tag">Participatory</div>
+                      <div class="info">
+                        <div class="date">Sep 23 – Oct 1 | 3pm – 9pm</div>
+                        <div class="loc">Location Name Here</div>
+                      </div>
+                      <div class="summary">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus est in enim accumsan, eget lacinia ex dapibus. Aenean rutrum maximus egest</p>
+                      </div>
+
+                      <div class="cta-button">
+                        <a href="#" class="button"><span>More Info</span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event" data-event-type="F">
+                      <h2 class="title">Architects of Air 3</h2>
+                      <div class="tag">Free</div>
+                      <div class="info">
+                        <div class="date">Sep 23 – Oct 1 | 3pm – 9pm</div>
+                        <div class="loc">Location Name Here</div>
+                      </div>
+                      <div class="summary">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus est in enim accumsan, eget lacinia ex dapibus. Aenean rutrum maximus egest</p>
+                      </div>
+
+                      <div class="cta-button">
+                        <a href="#" class="button"><span>More Info</span></a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <section id="upcoming-events" class="section upcoming-events-section blue-bg" data-scroll-section data-persistent>
+      <div class="wrapper" data-scroll data-scroll-speed="3.7">
+        <h2 class="section-title">Explore upcoming events</h2>
+        <div class="filter-action">
+          <div class="filter-wrap">
+            <div class="filter-col fc-left">
+              <label>Filter by type:</label>
+              <div class="selections by-type">
+                <a href="#" class="_A_ active"><span>All</span></a>
+                <a href="#" class="_P_"><span>Participatory</span></a>
+                <a href="#" class="_T_"><span>Ticketed</span></a>
+                <a href="#" class="_F_"><span>Free</span></a>
+              </div>
+            </div>
+            <div class="filter-col fc-right">
+              <label>Filter by date:</label>
+              <div class="selections by-date">
+                <select name="date">
+                  <option value="-">SELECT DATE</option>
+                  <option value="06.15.2022">06.15.2022</option>
+                  <option value="06.25.2022">06.25.2022</option>
+                  <option value="07.05.2022">07.05.2022</option>
+                  <option value="07.15.2022">07.15.2022</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
 

@@ -37,6 +37,10 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 </head>
 <body <?php body_class();?>>
     <a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
+
+    
+
+
     
     
                         

@@ -1,6 +1,6 @@
 <style type="text/css">
 <?php for($i=1; $i<=23; $i++) { $num=($i/100) * 10; $duration = number_format((float)$num, 2, '.', ''); ?>
-.viewing .squiggy1 span.span<?php echo $i?> {transition-delay: <?php echo $duration?>s;visibility: visible;}
+.squiggy.viewing .squiggy1 span.span<?php echo $i?> {transition-delay: <?php echo $duration?>s;visibility: visible;}
 <?php } ?>
 </style>
 <div class="squiggy sq1">
