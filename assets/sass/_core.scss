@@ -434,6 +434,11 @@ a {
     }
   }
 }
+body.logged-in.admin-bar {
+  @media screen and (min-width: 783px) {
+    #tabs-top {top:33px;}
+  }
+}
 
 #homerow1 {
   background: $primary-color;
