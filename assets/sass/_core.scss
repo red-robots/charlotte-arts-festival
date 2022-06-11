@@ -354,7 +354,7 @@ a {
       font-family: $font_secondary;
       font-size: 18px;
       line-height: 1.2;
-      color: $darkblue;
+      color: $superdarkblue;
       text-transform: uppercase;
       padding: 30px 30px;
       position: relative;
@@ -815,6 +815,7 @@ figure.viewing {
       width: 100%;
       height: 100%;
       text-align: left;
+      padding-top: 5vh;
       padding-left: 7vw;
       padding-right: 4vw;
     }
