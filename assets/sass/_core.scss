@@ -540,55 +540,6 @@ body.logged-in.admin-bar {
     }
   }
 
-  // .grid-sizer, .grid-item {
-  //   width: 50%;
-  // }
-  // .grid-item.img1 {
-  //   width: 100%!important;
-  //   z-index: 60!important;
-  //   transform: translateY(5vw);
-  //   figure {
-  //     width: 50%;
-  //     float: right;
-  //     margin-right: 5vw;
-  //   }
-  // }
-  // .grid-item.left {
-  //   transform: translateY(-6vw);
-  //   left: 0!important;
-  // }
-  // .grid-item.right {
-  //   transform: translateY(10vw);
-  //   left: unset!important;
-  //   right: 0!important;
-  //   &.middle-next {
-  //     transform: translateY(3vw);
-  //   }
-  // }
-  // .grid-item.middle {
-  //   transform: translateX(5vw) translateY(1vw);
-  //   width: 60%;
-  //   z-index: 40;
-  //   &.middle-next {
-  //     transform: translateX(7vw) translateY(-6vw);
-  //   }
-  // }
-  // .grid-item.img2.left {
-  //   transform: translateY(1vw);
-  // }
-  // .grid-item.has-text {
-  //   width: 100%!important;
-  //   transform: translateY(2vw);
-  //   figure {
-  //     width: 50%;
-  //     float: right;
-  //     margin-right: 5vw;
-  //   }
-  // }
-  // .grid-item.last {
-  //   transform: translateY(5vw);
-  // }
-
   /* NO MASONRY JS */
   .col-right .grid-no-js {
     transform: none;
@@ -598,30 +549,32 @@ body.logged-in.admin-bar {
       width: 100%;
       @include tab {
         width: 48%;
-        transform: translateY(-8vw);
       }
-      &.next {
-        transform: translateY(-8vw);
-      }
+      // &.next {
+      //   transform: translateY(-8vw);
+      // }
       &.has-squiggy-next {
         transform: translateY(-10vw);
       }
     }
     .grid-item.img1 {
       width: 100%;
-      transform: translateY(-6vw);
+      transform: translateY(-8vw);
       figure {
         width: 55%;
         float: right;
         margin-right: 5vw;
       }
     }
+    .grid-item.img3 {
+      transform: translateY(-7vw);
+    }
     .grid-item.middle {
       width: 100%;
-      // transform: translateY(-1vw);
+      transform: translateY(-11vw);
       z-index: 100;
       figure {
-        width: 70%;
+        width: 75%;
         float: right;
         margin-right: 6vw;
       }
@@ -636,14 +589,23 @@ body.logged-in.admin-bar {
         margin-right: 4vw;
       }
     }
-    .grid-item.has-squiggy-next:not(.img2) {
-      transform: translateY(-14vw);
-    }
+    // .grid-item.has-squiggy-next:not(.img2) {
+    //   transform: translateY(-14vw);
+    // }
     .grid-item.before-last {
       transform: translateY(-13vw);
     }
-    .grid-item.last {
-      transform: translateY(-12vw);
+    .grid-item.odd:not(.img1):not(.middle) {
+      transform: translateY(-10vw);
+    }
+    .grid-item.even:not(.img1):not(.middle) {
+      transform: translateY(-14vw);
+    }
+    .grid-item.odd.last:not(.img1):not(.middle),
+    .grid-item.even.last:not(.img1):not(.middle),
+    .grid-item.odd.last,
+    .grid-item.even.last {
+      transform: translateY(-15vw);
     }
   }
 
@@ -790,7 +752,8 @@ figure.viewing {
   }
   .fleft {
     width: 100%;
-    background-image:url('assets/images/demo/section-events.jpg');
+    // background-image:url('assets/images/demo/section-events.jpg');
+    background-color: #4A0002;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -915,12 +878,24 @@ figure.viewing {
       left: -50%;
       transform: translateX(100%) translateY(-55%);
       text-align: center;
-      background-image:url('assets/images/type1.svg');
+      // background-image:url('assets/images/type1.svg');
       background-size: 100%;
       background-repeat: no-repeat;
       background-position: center;
       background-color: transparent;
-      span {
+      transition: all ease .3s;
+      // span {
+      //   display: inline-block;
+      //   width: 100%;
+      //   text-align: center;
+      //   color: #000;
+      //   font-size: 28px;
+      //   font-weight: 500;
+      //   position: relative;
+      //   top: 50%;
+      //   transform: translateY(-50%);
+      // }
+      span#eventType {
         display: inline-block;
         width: 100%;
         text-align: center;
@@ -930,6 +905,15 @@ figure.viewing {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+        z-index: 10;
+      }
+      .bgcolor {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }

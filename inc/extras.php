@@ -380,7 +380,7 @@ function ea_disable_editor( $id = false ) {
   );
 
   $excluded_ids = array(
-    // get_option( 'page_on_front' )
+    get_option( 'page_on_front' ) /* Home page */
   );
 
   if( empty( $id ) )
@@ -430,4 +430,47 @@ add_filter( 'use_block_editor_for_post_type', 'ea_disable_gutenberg', 10, 2 );
 // }
 // add_action( 'admin_head', 'ea_disable_classic_editor' );
 
+
+function date_intervals_info($compare_date) {
+  $now = date('Y-m-d H:i:s');
+  // $d1 = new DateTime($now);
+  // $d2 = new DateTime($compare_date);
+  $info = array();
+
+  //$interval = $d1->diff($d2);
+  // $diffInSeconds = $interval->s; //45
+  // $diffInMinutes = $interval->i; //23
+  // $diffInHours   = $interval->h; //8
+  // $diffInDays    = $interval->d; //21
+  // $diffInMonths  = $interval->m; //4
+  // $diffInYears   = $interval->y; //1
+  
+
+  //or get Date difference as total difference
+  $d1 = strtotime($now);
+  $d2 = strtotime($compare_date);
+  $totalSecondsDiff = abs($d1-$d2); //42600225
+  $totalMinutesDiff = $totalSecondsDiff/60; //710003.75
+  $totalHoursDiff   = $totalSecondsDiff/60/60;//11833.39
+  $totalDaysDiff    = $totalSecondsDiff/60/60/24; //493.05
+  $totalMonthsDiff  = $totalSecondsDiff/60/60/24/30; //16.43
+  $totalYearsDiff   = $totalSecondsDiff/60/60/24/365; //1.35
+
+  $info['months'] = round($totalMonthsDiff);
+  $info['days'] = round($totalDaysDiff);
+  $info['hours'] = round($totalHoursDiff);
+  return $info;
+}
+
+
+function do_increment($number){
+  // get amount of decimals
+  $decimal = strlen(strrchr($number, '.')) -1;
+
+  $factor = pow(10,$decimal);
+
+  $incremented = (($factor * $number) + 1) / $factor;
+
+  return $incremented;
+}
 

@@ -37,7 +37,9 @@ jQuery(document).ready(function ($) {
 
       homerow1_width();
 
-      $('#fixed-elements').css('height', $('#imagecol').height() + 'px' );
+      var fixeElHeight = $('#imagecol').height() - 200;
+
+      $('#fixed-elements').css('height', fixeElHeight + 'px' );
 
       // if ($('#fixed-elements').isInViewport()) {
       //   $('#fixed-elements').addClass('viewing');
