@@ -138,120 +138,128 @@
 
     <?php /* EVENTS */ 
     $event_title = get_field('event_column_left_title');
-    $event_column_left_image = get_field('event_column_left_image');
-    $event_bg_img = ($event_column_left_image) ? ' style="background-image:url('.$event_column_left_image['url'].')"' : '';
-    $event_circular_text = get_field('event_circular_text');
-    $featuredEvents = tribe_get_events( [
-       'start_date'     => 'now',
-       'posts_per_page' => 10,
-       'featured'       => true,
-    ] );
     ?>
+    <?php if ($event_title) { ?>
+      <h2 id="events-title" class="rotated-title"><?php echo $event_title ?></h2>
+    <?php } ?>
+    <div class="section-outer-wrap section-same-title">
+      <?php include( locate_template('parts/home-featured-events.php') ); ?>
+      <?php include( locate_template('parts/home-upcoming-events.php') ); ?>
+    </div>
+      
 
-    <section id="events-section" class="section c-section -fixed events-section" data-scroll-section data-persistent>
-      <?php if ($event_title) { ?>
-        <h2 id="events-title" class="rotated-title"><?php echo $event_title ?></h2>
-      <?php } ?>
-      <div class="section-content">
-        <div class="flex-wrap">
-          <div class="flexcol fleft"<?php echo $event_bg_img ?>></div>
-          <div class="flexcol fright">
-
-            <div class="circular-text">
-              <span id="circular"><?php echo $event_circular_text ?></span>
-              <span id="circular-middle">
-                <span id="eventType" data-type="">T</span>
-                <span class="bgcolor"><?php include( locate_template('assets/images/category.svg') ); ?></span>
-              </span>
-            </div>
-
-            <div class="featured-events">
-              
-              <?php if ($featuredEvents) { ?>
-              <div class="swiper swiper-events">
-                <div class="swiper-wrapper">
-
-                  
-                  <?php foreach ($featuredEvents as $ev) { 
-                    $event_id = $ev->ID;
-                    $pagelink = get_permalink($event_id);
-                    $excerpt = ($ev->post_content) ? shortenText(strip_tags($ev->post_content),120,' ',"...") : ''; 
-                    $terms = wp_get_post_terms( $event_id, Tribe__Events__Main::TAXONOMY );
-                    $term = (isset($terms[0]) && $terms[0]) ? $terms[0] : '';
-                    $categoryName = (isset($term->name) && $term->name) ? $term->name : '';
-                    $firstCharacter = ($categoryName) ? strtoupper(substr($categoryName, 0, 1)) : '';
-                    $color = get_field('category_color', $term);
-                    $catColor = ($color) ? $color:'#CCC';
-                    ?>
-                    <div class="swiper-slide">
-                      <div class="event" data-event-type="<?php echo $firstCharacter ?>" data-color="<?php echo $catColor ?>">
-                        <h2 class="title"><?php echo $ev->post_title ?></h2>
-                        <?php if ( $categoryName ) { ?>
-                          <div class="tag"><span style="color:<?php echo $catColor ?>"><?php echo $categoryName ?></span></div>
-                        <?php } ?>
-                        <div class="info">
-                          <div class="date">Sep 23 – Oct 1 | 3pm – 9pm</div>
-                          <div class="loc">Location Name Here</div>
-                        </div>
-
-                        <div class="summary"> 
-                          <p><?php echo $excerpt ?></p>
-                        </div>
-
-                        <div class="cta-button">
-                          <a href="<?php echo $pagelink ?>" class="button"><span>More Info</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  <?php } ?>
-                  
-
-                </div>
-
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <?php } ?>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="upcoming-events" class="section upcoming-events-section blue-bg" data-scroll-section data-persistent>
-      <div class="wrapper" data-scroll data-scroll-speed="3.7">
-        <h2 class="section-title">Explore upcoming events</h2>
-        <div class="filter-action">
-          <div class="filter-wrap">
-            <div class="filter-col fc-left">
-              <label>Filter by type:</label>
-              <div class="selections by-type">
-                <a href="#" class="_A_ active"><span>All</span></a>
-                <a href="#" class="_P_"><span>Participatory</span></a>
-                <a href="#" class="_T_"><span>Ticketed</span></a>
-                <a href="#" class="_F_"><span>Free</span></a>
-              </div>
-            </div>
-            <div class="filter-col fc-right">
-              <label>Filter by date:</label>
-              <div class="selections by-date">
-                <select name="date">
-                  <option value="-">SELECT DATE</option>
-                  <option value="06.15.2022">06.15.2022</option>
-                  <option value="06.25.2022">06.25.2022</option>
-                  <option value="07.05.2022">07.05.2022</option>
-                  <option value="07.15.2022">07.15.2022</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <?php include( locate_template('parts/home-plan-visit.php') ); ?>  
   </div>
 
+  <script>
+    jQuery(document).ready(function($){
+      carousel_wrap_resizer();
+      $(window).on('orientationchange resize',function(){
+        carousel_wrap_resizer();
+      });
+      function carousel_wrap_resizer() {
+        if( $('.wrap-resizer').length ) {
+          var screenWidth = $(window).width();
+          var resizerWidth = $('.wrap-resizer').width();
+          var leftWidth = (screenWidth - resizerWidth) / 2;
+          //$('#upcoming_events_carousel').css('transform','translateX('+leftWidth+'px)');
+          $('#upcoming_events_carousel').css('left',leftWidth+'px');
+        }
+      }
 
+      //INIT
+      var show_at_most = $('#upcoming_events_carousel').attr('data-total');
+      let loop_option = (show_at_most>3) ? true : false;
+
+      // var owl = $('#upcoming_events_carousel.owl-carousel').owlCarousel({
+      //           center:false,
+      //           loop:loop_option,
+      //           margin:10,
+      //           nav:true,
+      //           responsive:{
+      //               0:{
+      //                   items:1
+      //               },
+      //               600:{
+      //                   items:3
+      //               },
+      //               1000:{
+      //                   items:4
+      //               }
+      //           }
+      //         });
+
+
+      var owl = $('#upcoming_events_carousel.owl-carousel').owlCarousel({
+          center:false,
+          loop:loop_option,
+          margin:30,
+          nav:true,
+          items:4,
+        });
+
+      $( '.owl-filter-bar' ).on( 'click', '.item', function() {
+        $('#upcoming_events_carousel').addClass('filtered');
+        var $item = $(this);  
+        var filter = $item.data( 'owl-filter' );
+        owl.owlcarousel2_filter( filter );
+        owl.owlCarousel('destroy');
+        var count = $(filter).length;
+        let loopStat = (count>2) ? true : false;
+        //let numItems = (count>4) ? 5 : 4;
+
+        if(filter=="*") {
+          owl.owlCarousel({
+            loop:true,
+            margin:20,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+          });
+        } else {
+          owl.owlCarousel({
+            loop:loopStat,
+            margin:20,
+            items:4,
+            nav:true
+          });
+        }
+        
+      });
+        
+
+      $('select#filterByDate').on('change',function(){
+        $('#upcoming_events_carousel').addClass('filtered');
+        var selectedDate = $(this).val();
+        var filterByDate = '.event[data-start="'+selectedDate+'"]';
+        owl.owlcarousel2_filter( filterByDate );
+        owl.owlCarousel('destroy');
+        var count = $(filterByDate).length;
+        let loopStat = (count>2) ? true : false;
+        owl.owlCarousel({
+          loop:loopStat,
+          margin:20,
+          items:4,
+          nav:true
+        });
+      });
+
+      $(document).on('click','.customCaroNav',function(e){
+        e.preventDefault();
+        var carouselNav = $(this).attr('data-rel');
+        $(carouselNav).trigger('click');
+      });
+      
+    });
+  </script>
 <?php
 get_footer();

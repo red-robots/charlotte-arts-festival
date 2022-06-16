@@ -41,14 +41,6 @@ jQuery(document).ready(function ($) {
 
       $('#fixed-elements').css('height', fixeElHeight + 'px' );
 
-      // if ($('#fixed-elements').isInViewport()) {
-      //   $('#fixed-elements').addClass('viewing');
-      // } else {
-      //   $('#fixed-elements').removeClass('viewing');
-      // }
-
-      
-
       $('.grid-item figure').each(function(){
         if ($(this).isInViewport()) {
           $(this).addClass('viewing');
@@ -60,8 +52,22 @@ jQuery(document).ready(function ($) {
       $('.section').each(function(){
         if ($(this).isInViewport()) {
           $(this).addClass('viewing');
+          // if( $(this).hasClass('upcoming-events-section') ) {
+          //   $('#events-title').appendTo('.upcoming-events-section');
+          // } else {
+          //   $('#events-title').appendTo('.featured-events-section');
+          // }
+
+          // if( $(this).hasClass('featured-events-section') ) {
+          //   $('#events-title').removeClass('hidden');
+          // } else {
+          //   $('#events-title').addClass('hidden');
+          // }
         } else {
           $(this).removeClass('viewing');
+          // if( $('.featured-events-section #events-title').length==0 ) {
+          //   $('#events-title').appendTo('.featured-events-section');
+          // }
         }
       });
 
@@ -76,11 +82,27 @@ jQuery(document).ready(function ($) {
 
       if( $('.featured-events').isInViewport() ) {
         $('.featured-events').addClass('viewing');
-        $('#events-title').addClass('sticky');
+        //$('#events-title').addClass('sticky');
       } else {
         $('.featured-events').removeClass('viewing');
-        $('#events-title').removeClass('sticky');
+        //$('#events-title').removeClass('sticky');
       }
+
+      if( $('.featured-events').isInViewport() || $('.upcoming-events-section').isInViewport() ) {
+        $('#events-title').addClass('animated fadeIn sticky');
+      } else {
+        $('#events-title').removeClass('animated fadeIn sticky');
+      }
+
+      // if( $('#upcoming-events-heading').isInViewport() ) {
+      //   //$('.featured-events').addClass('viewing');
+      //   //$('#events-title').addClass('move-bottom');
+      //   $('#events-section #events-title').appendTo('#upcoming-events');
+      // } else {
+      //   //$('#events-title').removeClass('move-bottom');
+      //   $('#upcoming-events #events-title').appendTo('#events-section');
+      // }
+
 
       /* Viewing Circular Text */
       if( $('.circular-text').isInViewport() ) {
@@ -105,17 +127,4 @@ jQuery(document).ready(function ($) {
       return elementBottom > viewportTop && elementTop < viewportBottom;
     };
 
-    // jQuery(document).ready(function($){
-    //   var div_top = $('#home-banner').offset().top;
-    //   $(window).scroll(function() {
-    //       var window_top = $(window).scrollTop() - 0;
-    //       if (window_top > div_top) {
-    //           if (!$('#hometabs').is('.sticky')) {
-    //               $('#hometabs').addClass('sticky');
-    //           }
-    //       } else {
-    //           $('#hometabs').removeClass('sticky');
-    //       }
-    //   });
-    // })
 }); 
