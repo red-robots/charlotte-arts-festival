@@ -11,6 +11,11 @@ jQuery(document).ready(function ($) {
   //   percentPosition: true
   // });
 
+  if( $('.footcol').length && $('#footer-copyright').length ) {
+    var last_footer_col = $('.footcol .social-media');
+    $('#footer-copyright').appendTo(last_footer_col);
+  }
+
 
   var swiper = new Swiper(".swiper-events", {
     direction: "vertical",

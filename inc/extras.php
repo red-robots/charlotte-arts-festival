@@ -153,12 +153,12 @@ function get_social_media() {
 
 function social_icons() {
     $social_types = array(
-        'facebook'  => 'fa fa-facebook-square',
-        'twitter'   => 'fab fa-twitter-square',
-        'linkedin'  => 'fa fa-linkedin-square',
-        'instagram' => 'fab fa-instagram-square',
-        'youtube'   => 'fab fa-youtube-square',
-        'vimeo'     => 'fab fa-vimeo-square',
+        'facebook'  => 'fa fa-facebook',
+        'twitter'   => 'fab fa-twitter',
+        'linkedin'  => 'fa fa-linkedin',
+        'instagram' => 'fab fa-instagram',
+        'youtube'   => 'fab fa-youtube',
+        'vimeo'     => 'fab fa-vimeo',
     );
     return $social_types;
 }
@@ -472,5 +472,41 @@ function do_increment($number){
   $incremented = (($factor * $number) + 1) / $factor;
 
   return $incremented;
+}
+
+
+add_shortcode( 'footer_navigation', 'footer_navigation_func' );
+function footer_navigation_func( $atts ) {
+  // $a = shortcode_atts( array(
+  //   'numcol'=>3
+  // ), $atts );
+  // $numcol = ($a['numcol']) ? $a['numcol'] : 3;
+  $output = '';
+  ob_start();
+  if ( has_nav_menu( 'footer' ) ) {
+    wp_nav_menu( array( 'theme_location' => 'footer', 'container'=>false, 'menu_id' => 'footer-menu') );
+  }
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
+}
+
+add_shortcode( 'social_media', 'social_media_func' );
+function social_media_func( $atts ) {
+  $social_media = get_social_media();
+  $output = '';
+  ob_start();
+  if ($social_media) { ?>
+  <div class="social-media">
+    <div class="inner">
+    <?php foreach ($social_media as $m) { ?>
+      <a href="<?php echo $m['url'] ?>" target="_blank" aria-label="<?php echo $m['type'] ?>"><i class="<?php echo $m['icon'] ?>"></i></a>
+    <?php } ?>
+    </div>
+  </div> 
+  <?php }
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
 }
 

@@ -12,23 +12,25 @@
   <div class="section-content">
     <div class="flexwrap">
       <div class="fcol f-left">
-        <a href="#">
+        <a href="#" class="large-photo-block" data-scroll>
           <figure class="img-bg" <?php echo $style1 ?>>
             <span class="caption">
               <span class="title">Day of Play</span>
             </span>
             <img src="<?php echo IMAGES_URL ?>/square.png" alt="" aria-hidden="true" />
           </figure>
+          <span class="rotated-large-title"><span>DAY &</span></span>
         </a>
       </div>
       <div class="fcol f-right">
-        <a href="#">
+        <a href="#" class="large-photo-block" data-scroll>
           <figure class="img-bg" <?php echo $style2 ?>>
             <span class="caption">
               <span class="title">Night of Light</span>
             </span>
             <img src="<?php echo IMAGES_URL ?>/square.png" alt="" aria-hidden="true" />
           </figure>
+          <span class="rotated-large-title"><span>NIGHT</span></span>
         </a>
       </div>
     </div>

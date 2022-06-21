@@ -77,7 +77,7 @@ if($events) {
             <div class="selections by-date">
               <span class="selectwrap">
                 <select id="filterByDate" name="date">
-                  <option value="-">SELECT DATE</option>
+                  <option value="*">SELECT DATE</option>
                   <?php foreach ($eventDateList as $date) { ?>
                   <option value="<?php echo $date ?>"><?php echo $date ?></option>
                   <?php } ?>

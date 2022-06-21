@@ -149,6 +149,11 @@
       
 
     <?php include( locate_template('parts/home-plan-visit.php') ); ?>  
+
+
+    <?php include( locate_template('footer_homepage.php') ); ?>  
+    
+
   </div>
 
   <script>
@@ -240,17 +245,21 @@
       $('select#filterByDate').on('change',function(){
         $('#upcoming_events_carousel').addClass('filtered');
         var selectedDate = $(this).val();
-        var filterByDate = '.event[data-start="'+selectedDate+'"]';
-        owl.owlcarousel2_filter( filterByDate );
-        owl.owlCarousel('destroy');
-        var count = $(filterByDate).length;
-        let loopStat = (count>2) ? true : false;
-        owl.owlCarousel({
-          loop:loopStat,
-          margin:20,
-          items:4,
-          nav:true
-        });
+        if(selectedDate=='*') {
+          $('#term-all').trigger('click');
+        } else {
+          var filterByDate = '.event[data-start="'+selectedDate+'"]';
+          owl.owlcarousel2_filter( filterByDate );
+          owl.owlCarousel('destroy');
+          var count = $(filterByDate).length;
+          let loopStat = (count>3) ? true : false;
+          owl.owlCarousel({
+            loop:loopStat,
+            margin:20,
+            items:4,
+            nav:true
+          });
+        }
       });
 
       $(document).on('click','.customCaroNav',function(e){

@@ -26,6 +26,9 @@ pre {
 	margin: 5vw;
 	padding: 20px;
 }
+html, body {
+  height: 100%;
+}
 body {
 	font-family: $font_primary;
 	font-size: 16px;
@@ -33,6 +36,8 @@ body {
 	line-height: 1.5;
 	color: $color_text_main;
   background-color: $primary-color;
+  overflow-x: hidden;
+  overflow-y: auto;
   @include tab {
     font-size: 14px;
   }
@@ -185,7 +190,8 @@ a {
     background-color: #000;
   }
   #video {
-    position: fixed;
+    // position: fixed;
+    position: absolute;
     right: 0;
     bottom: 0;
     min-width: 100%; 
@@ -451,6 +457,7 @@ body.logged-in.admin-bar {
   }
   .blue-section {
     overflow: hidden;
+    height: auto!important;
   }
   // .flexcol {
   //   @include flexgroup();
@@ -758,9 +765,9 @@ figure.viewing {
   &.c-section {
     margin-bottom: 0;
   }
-  @include tab {
-    height: 100vh;
-  }
+  // @include tab {
+  //   height: 100vh;
+  // }
   .section-content {
     background: #b01e22;
     height: 250px;
@@ -951,7 +958,8 @@ figure.viewing {
   z-index: 110;
   .section-inner-content {
     padding-top: 0;
-    padding-bottom: 10vw;
+    padding-bottom: 15vw;
+    background: $darkblue;
   }
   .section-header {
     @include tab {
@@ -1422,7 +1430,7 @@ header.section-title-center {
     line-height: 1.1;
     color: #fff;
     text-transform: uppercase;
-    padding: 25px 30px 28px;
+    padding: 35px 30px 40px;
   }
 }
 .plan-visit-section {
@@ -1467,14 +1475,328 @@ header.section-title-center {
         @include flexbox-justify(center);
         @include flexbox-align-items(center);
         .title {
+          display: inline-block;
           font-family: $font_secondary;
           font-weight: 400;
           font-size: 2.5rem;
           line-height: 1.1;
           color: #fff;
           text-transform: uppercase;
+          transition: all ease 1s;
+          transition-delay: 1s;
+          opacity: 0;
+          //@include animateThis(1s);
         }
+      }
+
+      .is-inview {
+        .caption .title {
+          opacity: 1;
+          //@include animateEffect(fadeIn);
+        }
+      }
+
+      .rotated-large-title {
+        display: block;
+        z-index: 100;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 75%;
+        transform: translateY(-75%);
+        transition: all ease 1.5s;
+        opacity: 0;
+        span {
+          font-family: $font_secondary;
+          font-size: 10vw;
+          font-weight: 200;
+          color: $yellow;
+          display: inline-block;
+          position: relative;
+        }
+      }
+      &.f-left {
+        .rotated-large-title {
+          right: 0;
+          margin-top: 50vh;
+          span {
+            top: 0;
+            left: 35vw;
+            transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+          }
+        }
+
+        .is-inview {
+          .rotated-large-title {
+            opacity: 1;
+            transition-delay: 1s;
+            margin-top: 0;
+          }
+        }
+        
+      }
+      &.f-right {
+        .rotated-large-title {
+          right: 0;
+          margin-top: -50vh;
+          span {
+            top: 0;
+            right: 5vw;
+            transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+          }
+        }
+
+        .is-inview {
+          .rotated-large-title {
+            opacity: 1;
+            transition-delay: 1.2s;
+            margin-top: 0;
+          }
+        }
+        
       }
     }
   }
 }
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: unset!important;
+}
+
+/* FOOTER */
+.site-footer {
+  background-color: $primary-color;
+  background-image: url('assets/images/footer-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-height: 30em;
+  position: relative;
+  z-index: 300;
+  .wrapper {
+    padding-top: 8vw;
+    padding-bottom: 20vw;
+  }
+  .footer-flexwrap {
+    @include flexbox();
+    @include flexbox-justify(space-between);
+  }
+  .foot-logo {
+    margin-bottom: 50px;
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
+  .presentedby {
+    .text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    .img {
+      position: relative;
+      @include tab {
+        left: -5px;
+      }
+      img {
+        width: 130px;
+        height: auto;
+        margin: 5px;
+        @include tab {
+          width: auto;
+          height: 65px;
+        }
+      }
+    }
+  }
+
+  .footcol {
+    font-size: 20px;
+    line-height: 1.3;
+    color: $teal;
+    position: relative;
+    h3, h3.title {
+      font-family: $font_secondary;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #FFF;
+      text-transform: uppercase;
+      margin: 0 0 20px;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $teal;
+    }
+    div.info {
+      margin-bottom: 35px;
+    }
+    div.info:last-child {
+      margin-bottom: 0;
+    }
+    p {
+      margin: 0 0 1.35em;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  #footer-menu {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+    li {
+      margin: 0 0 1em;
+      ul {
+        display: none;
+      }
+    }
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /* SOCIAL MEDIA */
+  #footer-copyright {
+    display: none;
+  }
+
+  .footcol #footer-copyright {
+    display: inline-block;
+  }
+
+  .social-media {
+    @include flexbox();
+    @include flexbox-justify(space-between);
+    @include flexbox-align-items(center);
+    .inner {
+      display: inline-block;
+      @include flexbox();
+      @include flexbox-justify(space-between);
+      a {
+        @include flexbox();
+        @include flexbox-justify(center);
+        @include flexbox-align-items(center);
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,1);
+        border-radius: 500px;
+        color: $darkblue;
+        text-align: center;
+        border:1px solid #FFF;
+        margin: 5px;
+        i {
+          display: inline-block;
+          line-height: 1;
+          font-size: 1.1em;
+          transition: all ease .1s;
+        }
+        
+        &:hover {
+          background: rgba(255,255,255,0);
+          color: #FFF;
+          i {
+            transform: scale(0.8);
+          }
+        }
+        @include tab {
+          margin: 0 10px 0 0;
+        }
+
+      }
+    }
+  }
+
+  /* FOOTER FORM */
+  .gform_wrapper.gravity-theme {
+    width: 100%;
+    margin-bottom: 40px;
+    @include tab {
+      width: 350px;
+    }
+    form,
+    .gfield {
+      position: relative;
+      width: 100%!important;
+    }
+    .ginput_container_email {
+      input {
+        border: 1px solid $teal;
+        width: 100%!important;
+        height: 50px;
+        padding: 5px 80px 5px 20px;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1;
+        color: #FFF;
+      }
+    }
+    .gform_footer {
+      width: 75px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      margin: 0 0;
+      overflow: hidden;
+      &:before {
+        content:"";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image:url('assets/images/arrow.svg');
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter:invert(100%);
+      }
+      .gform_button {
+        width: 100%;
+        height: 100%;
+        margin: 0 0;
+        padding: 0 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 5;
+        text-indent: -100em;
+        -webkit-appearance:none;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    ::-webkit-input-placeholder {
+      color: #6f7286;
+    }
+    ::placeholder {
+      color: #6f7286;
+    }
+  }
+
+
+  .gform_wrapper .gfield_validation_message, 
+  .gform_wrapper .validation_message {
+    border: none;
+  }
+  .gfield_error .gfield_validation_message {
+    background: transparent;
+    padding: 0!important;
+    color: #ff2a2a;
+  }
+
+}
+
+
+
+
