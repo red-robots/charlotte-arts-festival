@@ -113,6 +113,31 @@ jQuery(document).ready(function ($) {
 
     });
 
+    loop_squiggy2();
+    function loop_squiggy2() {
+      var count_squiggy2 = $('.squiggy2 span').length;
+      var total = parseInt(count_squiggy2) + 1;
+      var INTERVAL = 1;
+      //var delay = INTERVAL * 50;
+      var counter = parseInt( 1, 10 );
+      setInterval( function() {
+        var ctr = counter++;
+        if(ctr==total) {
+          counter = 1;
+        }
+        var i=1;
+        $('.squiggy2 span').each(function(){
+          if(i==ctr) {
+            $(this).addClass('active');
+          } else {
+            $(this).removeClass('active');
+          }
+          i++;
+        });
+      }, 80 );
+
+    }
+
 
     function homerow1_width() {
       var hrow1_width = $('#homerow1 .c-sections_infos_text').width();
@@ -127,4 +152,29 @@ jQuery(document).ready(function ($) {
       return elementBottom > viewportTop && elementTop < viewportBottom;
     };
 
+    if( $('#homerow1 .has-squiggy').length ) {
+      $('#homerow1 .has-squiggy').next().addClass('next');
+    }
+
 }); 
+
+// var INTERVAL = 1;
+// $(document).ready( function() {
+//   var delay = INTERVAL * 1000;
+//   var target = $('#counter');
+//   var counter = parseInt( 1, 10 );
+//   setInterval( function() {
+//     var ctr = counter++;
+//     if(ctr==7) {
+//       counter = 1;
+//     }
+
+//     console.log(ctr);
+//   }, delay );
+
+
+// } );
+
+
+
+

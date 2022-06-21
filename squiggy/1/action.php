@@ -10,5 +10,7 @@
       }
     ?>
   </div>
-  <em>IMAGINE.</em>
+  <?php if ( isset($title1_text) && $title1_text ) { ?>
+  <em><?php echo $title1_text ?></em>
+  <?php } ?>
 </div>

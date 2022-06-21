@@ -7,6 +7,19 @@ $featuredEvents = tribe_get_events( [
    'posts_per_page' => 10,
    'featured'       => true,
 ] );
+$default_color = '';
+if ($featuredEvents) {
+  $first_item = $featuredEvents[0];
+  $f_event_id = $first_item->ID;
+  $f_terms = wp_get_post_terms( $f_event_id, Tribe__Events__Main::TAXONOMY );
+  $f_term = (isset($f_terms[0]) && $f_terms[0]) ? $f_terms[0] : '';
+  if($f_terms) {
+    $f_color = get_field('category_color', $f_term);
+    if($f_color) {
+      $default_color = $f_color;
+    }
+  }
+}
 ?>
 <section id="events-section" class="section c-section -fixed featured-events-section events-section" data-scroll-section data-persistent>
   
@@ -18,8 +31,10 @@ $featuredEvents = tribe_get_events( [
         <div class="circular-text">
           <span id="circular"><?php echo $event_circular_text ?></span>
           <span id="circular-middle">
-            <span id="eventType" data-type="">T</span>
+            <?php if ($default_color) { ?>
+            <span id="eventType" data-type=""></span>
             <span class="bgcolor"><?php include( locate_template('assets/images/category.svg') ); ?></span>
+            <?php } ?>
           </span>
         </div>
 
@@ -59,7 +74,7 @@ $featuredEvents = tribe_get_events( [
                 $venue = tribe_get_venue($event_id);
                 ?>
                 <div class="swiper-slide">
-                  <div class="event" data-event-type="<?php echo $firstCharacter ?>" data-color="<?php echo $catColor ?>">
+                  <div class="event" data-event-type="<?php echo $firstCharacter ?>" data-color="<?php echo ($categoryName) ? $catColor : 'transparent' ?>">
                     <h2 class="title"><?php echo $ev->post_title ?></h2>
                     <?php if ( $categoryName ) { ?>
                       <div class="tag"><span style="color:<?php echo $catColor ?>"><?php echo $categoryName ?></span></div>

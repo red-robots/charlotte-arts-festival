@@ -52,9 +52,15 @@ jQuery(document).ready(function ($) {
   swiper.on('slideChangeTransitionStart', function () {
     var eventType = $('.swiper-slide-active .event').attr('data-event-type');
     var eventColor = $('.swiper-slide-active .event').attr('data-color');
-    $('#eventType').text(eventType);
-    $('#eventType').attr('data-type',eventType);
-    $('#circular-middle .bgcolor path').attr('style','fill:'+eventColor);
+    if(eventType) {
+      $('#circular-middle').show();
+      $('#eventType').text(eventType);
+      $('#eventType').attr('data-type',eventType);
+      $('#circular-middle .bgcolor path').attr('style','fill:'+eventColor);
+    } else {
+      $('#circular-middle').hide();
+    }
+    
   });
 
   setTimeout(function(){

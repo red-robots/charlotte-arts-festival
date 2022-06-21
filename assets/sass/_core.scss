@@ -459,9 +459,6 @@ body.logged-in.admin-bar {
     overflow: hidden;
     height: auto!important;
   }
-  // .flexcol {
-  //   @include flexgroup();
-  // }
   .col-left,
   .col-right {
     width: 100%;
@@ -511,13 +508,13 @@ body.logged-in.admin-bar {
       float: right;
       width: 60%;
       padding: 0 5vw;
-      transform: translateY(-8vw);
+      // transform: translateY(-8vw);
     }
     .images {
       position:relative;
       width: 100%;
       float: left;
-      transform: translateY(-25vh);
+      // transform: translateY(-25vh);
     }
     figure {
       display: inline-block;
@@ -552,8 +549,71 @@ body.logged-in.admin-bar {
   }
 
   /* NO MASONRY JS */
+  // .col-right .grid-no-js {
+  //   transform: none;
+  //   .grid-item {
+  //     position: relative;
+  //     display: inline-block!important;
+  //     width: 100%;
+  //     @include tab {
+  //       width: 48%;
+  //     }
+  //     &.has-squiggy-next {
+  //       transform: translateY(-10vw);
+  //     }
+  //   }
+  //   .grid-item.img1 {
+  //     width: 100%;
+  //     transform: translateY(-8vw);
+  //     figure {
+  //       width: 55%;
+  //       float: right;
+  //       margin-right: 5vw;
+  //     }
+  //   }
+  //   .grid-item.img3 {
+  //     transform: translateY(-7vw);
+  //   }
+  //   .grid-item.middle {
+  //     width: 100%;
+  //     transform: translateY(-11vw);
+  //     z-index: 100;
+  //     figure {
+  //       width: 75%;
+  //       float: right;
+  //       margin-right: 6vw;
+  //     }
+  //   }
+  //   .grid-item.has-squiggy:not(.img1) {
+  //     width: 100%;
+  //     transform: translateY(-8vw);
+  //     z-index: 100;
+  //     figure {
+  //       width: 55%;
+  //       float: right;
+  //       margin-right: 4vw;
+  //     }
+  //   }
+  //   .grid-item.before-last {
+  //     transform: translateY(-13vw);
+  //   }
+  //   .grid-item.odd:not(.img1):not(.middle) {
+  //     transform: translateY(-10vw);
+  //   }
+  //   .grid-item.even:not(.img1):not(.middle) {
+  //     transform: translateY(-14vw);
+  //   }
+  //   .grid-item.odd.last:not(.img1):not(.middle),
+  //   .grid-item.even.last:not(.img1):not(.middle),
+  //   .grid-item.odd.last,
+  //   .grid-item.even.last {
+  //     transform: translateY(-15vw);
+  //   }
+  // }
+
+
+  /* NEW GRID */
   .col-right .grid-no-js {
-    transform: none;
     .grid-item {
       position: relative;
       display: inline-block!important;
@@ -561,63 +621,70 @@ body.logged-in.admin-bar {
       @include tab {
         width: 48%;
       }
-      // &.next {
-      //   transform: translateY(-8vw);
-      // }
       &.has-squiggy-next {
         transform: translateY(-10vw);
       }
     }
-    .grid-item.img1 {
-      width: 100%;
-      transform: translateY(-8vw);
-      figure {
-        width: 55%;
-        float: right;
-        margin-right: 5vw;
+
+    .grid-item.odd {
+      @include tab {
+        figure {
+          transform: translateY(6vw);
+        }
       }
     }
-    .grid-item.img3 {
-      transform: translateY(-7vw);
+
+    .grid-item.has-squiggy {
+      @include tab {
+        width: 100%;
+        figure {
+          width: 60%;
+          float: right;
+          transform: translateX(-2vw) translateY(5vw);
+        }
+      }
+    }
+
+    .grid-item.img3.has-squiggy {
+      @include tab {
+        width: 48%;
+        figure {
+          width: 100%;
+          transform: translateX(0) translateY(3vw);
+        }
+      }
     }
     .grid-item.middle {
-      width: 100%;
-      transform: translateY(-11vw);
-      z-index: 100;
-      figure {
-        width: 75%;
-        float: right;
-        margin-right: 6vw;
+      @include tab {
+        width: 100%;
+        figure {
+          width: 80%;
+          float: right;
+          transform: translateX(-5vw) translateY(3vw);
+        }
       }
     }
-    .grid-item.has-squiggy:not(.img1) {
-      width: 100%;
-      transform: translateY(-8vw);
-      z-index: 100;
+
+    .grid-item.middle.before_last {
       figure {
-        width: 55%;
-        float: right;
-        margin-right: 4vw;
+        transform: translateX(-5vw) translateY(1vw);
       }
     }
-    // .grid-item.has-squiggy-next:not(.img2) {
-    //   transform: translateY(-14vw);
-    // }
-    .grid-item.before-last {
-      transform: translateY(-13vw);
+
+    .grid-item.odd.last {
+      @include tab {
+        width: 100%;
+        figure {
+          width: 60%;
+          transform: translateX(0) translateY(-5vw);
+        }
+      }
     }
-    .grid-item.odd:not(.img1):not(.middle) {
-      transform: translateY(-10vw);
+
+    .animation-2 {
+
     }
-    .grid-item.even:not(.img1):not(.middle) {
-      transform: translateY(-14vw);
-    }
-    .grid-item.odd.last:not(.img1):not(.middle),
-    .grid-item.even.last:not(.img1):not(.middle),
-    .grid-item.odd.last,
-    .grid-item.even.last {
-      transform: translateY(-15vw);
-    }
+
   }
 
 }
@@ -670,6 +737,28 @@ body.logged-in.admin-bar {
     transition-delay: 0.5s;
   }
   &.sq2 {
+    // left: -16vw;
+    // margin-top: -2vw;
+    left: 5vw;
+    bottom: -2vw;
+    span {
+      width: 200px;
+      height: 200px;
+      background-size: cover;
+      left: 8vw;
+      top: -62px;
+    }
+    .curvy {
+      transform: none;
+    }
+    em {
+      transition-delay: 1s;
+      color: $teal;
+      bottom: 70px;
+      margin-left: 30px;
+    }
+  }
+  &.sq3 {
     left: -16vw;
     margin-top: -2vw;
     .curvy {
@@ -690,7 +779,8 @@ figure.viewing {
     transform: translateY(0)!important;
   }
   .squiggy.sq1,
-  .squiggy.sq2 {
+  .squiggy.sq2,
+  .squiggy.sq3 {
     em {
       opacity: 1;
       transform: translateX(50%) skewX(0);
@@ -765,9 +855,9 @@ figure.viewing {
   &.c-section {
     margin-bottom: 0;
   }
-  // @include tab {
-  //   height: 100vh;
-  // }
+  @include tab {
+    height: 100vh;
+  }
   .section-content {
     background: #b01e22;
     height: 250px;
@@ -817,7 +907,8 @@ figure.viewing {
       width: 100%;
       height: 100%;
       text-align: left;
-      padding-top: 5vh;
+      padding-top: 10vh;
+      padding-bottom: 15vh;
       padding-left: 7vw;
       padding-right: 4vw;
     }
@@ -1312,8 +1403,8 @@ figure.viewing {
   .swiper-pagination-vertical.swiper-pagination-bullets, 
   .swiper-vertical>.swiper-pagination-bullets {
     right: 0;
-    top: 35%;
-    transform: translate3d(0px, -38%, 0);
+    top: 50%;
+    transform: translate3d(0px, -50%, 0);
   }
   .swiper-pagination-bullet-active {
     background: #7cb342;
