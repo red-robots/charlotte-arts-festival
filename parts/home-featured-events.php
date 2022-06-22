@@ -8,12 +8,14 @@ $featuredEvents = tribe_get_events( [
    'featured'       => true,
 ] );
 $default_color = '';
+$default_firstChar = '';
 if ($featuredEvents) {
   $first_item = $featuredEvents[0];
   $f_event_id = $first_item->ID;
   $f_terms = wp_get_post_terms( $f_event_id, Tribe__Events__Main::TAXONOMY );
   $f_term = (isset($f_terms[0]) && $f_terms[0]) ? $f_terms[0] : '';
   if($f_terms) {
+    $default_firstChar = ($f_term->name) ? strtoupper(substr($f_term->name, 0, 1)) : '';
     $f_color = get_field('category_color', $f_term);
     if($f_color) {
       $default_color = $f_color;
@@ -22,7 +24,9 @@ if ($featuredEvents) {
 }
 ?>
 <section id="events-section" class="section c-section -fixed featured-events-section events-section" data-scroll-section data-persistent>
-  
+  <?php if ( isset($event_title) && $event_title ) { ?>
+    <h2 id="events-title-mobile" style="display:none;"><?php echo $event_title ?></h2>
+  <?php } ?>
   <div class="section-content">
     <div class="flex-wrap">
       <div class="flexcol fleft"<?php echo $event_bg_img ?>></div>
@@ -32,7 +36,7 @@ if ($featuredEvents) {
           <span id="circular"><?php echo $event_circular_text ?></span>
           <span id="circular-middle">
             <?php if ($default_color) { ?>
-            <span id="eventType" data-type=""></span>
+            <span id="eventType" data-type="<?php echo $default_firstChar ?>"></span>
             <span class="bgcolor"><?php include( locate_template('assets/images/category.svg') ); ?></span>
             <?php } ?>
           </span>

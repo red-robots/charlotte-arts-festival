@@ -94,15 +94,6 @@ jQuery(document).ready(function ($) {
         $('#events-title').removeClass('animated fadeIn sticky');
       }
 
-      // if( $('#upcoming-events-heading').isInViewport() ) {
-      //   //$('.featured-events').addClass('viewing');
-      //   //$('#events-title').addClass('move-bottom');
-      //   $('#events-section #events-title').appendTo('#upcoming-events');
-      // } else {
-      //   //$('#events-title').removeClass('move-bottom');
-      //   $('#upcoming-events #events-title').appendTo('#events-section');
-      // }
-
 
       /* Viewing Circular Text */
       if( $('.circular-text').isInViewport() ) {
@@ -158,22 +149,6 @@ jQuery(document).ready(function ($) {
 
 }); 
 
-// var INTERVAL = 1;
-// $(document).ready( function() {
-//   var delay = INTERVAL * 1000;
-//   var target = $('#counter');
-//   var counter = parseInt( 1, 10 );
-//   setInterval( function() {
-//     var ctr = counter++;
-//     if(ctr==7) {
-//       counter = 1;
-//     }
-
-//     console.log(ctr);
-//   }, delay );
-
-
-// } );
 
 
 

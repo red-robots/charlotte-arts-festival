@@ -35,6 +35,8 @@ $p_logos = (isset($footer_partners['logos']) && $footer_partners['logos']) ? $fo
           <?php } ?>
         </div>
         <?php } ?>
+
+        <div id="copyright-mobile"></div>  
       </div>
       <?php } ?>
 

@@ -28,11 +28,9 @@ if($events) {
   $btnTitle = (isset($viewBtn['title']) && $viewBtn['title']) ? $viewBtn['title'] : '';
   $btnLink = (isset($viewBtn['url']) && $viewBtn['url']) ? $viewBtn['url'] : '';
   $btnTarget = (isset($viewBtn['target']) && $viewBtn['target']) ? $viewBtn['target'] : '_self';
+  $custom_slide_buttons = '';
   ?>
   <section id="upcoming-events" class="section upcoming-events-section blue-bg" data-scroll-section data-persistent>
-    <?php if ($event_title) { ?>
-      <h2 id="events-title-secondary" class="rotated-title hidden" style="display:none!important;"><?php echo $event_title ?></h2>
-    <?php } ?>
     <div class="section-inner-content" data-scroll data-scroll-speed="3.7">
       <?php if ( $section_title ) { ?>
       <header id="upcoming-events-heading" class="section-header">
@@ -41,7 +39,7 @@ if($events) {
             <div class="fcol left">
               <h2 class="section-title"><?php echo $section_title ?></h2>
             </div>
-            <div class="fcol right buttoncol">
+            <div class="fcol right buttoncol slide-buttons-desktop">
               <div class="flex">
                 <div id="slideNavs">
                   <a href="javascript:void(0)" class="customCaroNav prev" data-rel=".owl-prev"><span>previous</span></a>
@@ -63,10 +61,25 @@ if($events) {
           <div class="filter-col fc-left">
             <label>Filter by type:</label>
             <div class="selections by-type owl-filter-bar">
-              <a id="term-all" href="javascript:void(0)" data-term="all" data-owl-filter="*" class="item filter-All active"><span>All</span></a>
-              <?php foreach ($event_terms as $term) { ?>
-              <a href="javascript:void(0)" id="term-<?php echo $term->slug; ?>" data-term="<?php echo $term->slug; ?>" class="item cat_<?php echo $term->slug; ?>" data-owl-filter=".term-<?php echo $term->slug; ?>" style="color:<?php echo $term->textcolor; ?>"><span><?php echo $term->name; ?></span></a>
-              <?php } ?>
+
+              <div id="filter-cat-link">
+                <a id="term-all" href="javascript:void(0)" data-term="all" data-owl-filter="*" class="item filter-All active"><span>All</span></a>
+                <?php foreach ($event_terms as $term) { ?>
+                <a href="javascript:void(0)" id="term-<?php echo $term->slug; ?>" data-term="<?php echo $term->slug; ?>" class="item cat_<?php echo $term->slug; ?>" data-owl-filter=".term-<?php echo $term->slug; ?>" style="color:<?php echo $term->textcolor; ?>"><span><?php echo $term->name; ?></span></a>
+                <?php } ?>
+              </div>
+
+              <div id="filter-dropdown">
+                <span class="selectwrap">
+                  <select id="filterEventType" name="event_type">
+                    <option value="*">EVENT TYPE</option>
+                    <?php foreach ($event_terms as $term) { ?>
+                    <option value="<?php echo $term->slug ?>"><?php echo $term->name; ?></option>
+                    <?php } ?>
+                  </select>
+                </span>
+              </div>
+
             </div>
           </div>
           <?php } ?>
@@ -151,6 +164,16 @@ if($events) {
           </div>
         </div>
       </div>  
+
+      <div class="slide-buttons-mobile">
+        <a href="javascript:void(0)" class="customCaroNav prev" data-rel=".owl-prev"><span>previous</span></a>
+
+        <?php if ( $btnTitle && $btnLink ) { ?>
+        <a href="<?php echo $btnLink ?>" target="<?php echo $btnTarget ?>" class="view-all-btn theme-btn"><span><?php echo $btnTitle ?></span></a>
+        <?php } ?>
+
+        <a href="javascript:void(0)" class="customCaroNav next" data-rel=".owl-next"><span>next</span></a>
+      </div>
     </div>
 
   </section>
