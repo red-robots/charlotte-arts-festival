@@ -1,6 +1,7 @@
 
-
-  
+  <?php if (!is_home() && !is_front_page()) { ?>
+  <?php include( locate_template('parts/footer_content.php') ); ?> 
+  <?php } ?>
 	
 <?php wp_footer(); ?>
 

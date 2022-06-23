@@ -13,16 +13,22 @@
  */
 get_header(); ?>
 <div id="primary" class="content-area default-template">
-	<main id="main" class="site-main wrapper">
-		<?php while ( have_posts() ) : the_post(); ?>
-      <header class="entry-title">
-        <div class="wrapper">
-          <h1 class="page-title"><?php the_title(); ?></h1>
-        </div>
-      </header>
-      <section class="entry-content"><?php the_content(); ?></section>
-		<?php endwhile; ?>	
-	</main>
+	<?php while ( have_posts() ) : the_post(); ?>
+  <?php  
+    $header_image = get_field('header_image');
+    $header_bg = ($header_image) ? ' style="background-image:url('.$header_image['url'].')"' : '';
+  ?>
+    <header class="page-header"<?php echo $header_bg ?>>
+      <h1 class="page-title"><span class="rotated"><?php the_title(); ?></span></h1>
+    </header>
+
+
+    <section class="entry-content">
+      <div class="middle-container">
+        <?php the_content(); ?>
+      </div>
+    </section>
+	<?php endwhile; ?>	
 </div>
 <?php
 get_footer();

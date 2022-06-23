@@ -11,6 +11,12 @@ jQuery(document).ready(function ($) {
   //   percentPosition: true
   // });
 
+  $('#mobile-menu').on('click',function(e){
+    e.preventDefault();
+    $(this).toggleClass('open');
+    $('#site-navigation').toggleClass('open');
+  });
+
   move_footer_copyright();
   $(window).on('orientationchange resize',function(){
     move_footer_copyright();

@@ -510,3 +510,19 @@ function social_media_func( $atts ) {
   return $output;
 }
 
+
+/* MENU ITEMS WITH CUSTOM FIELD */
+add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+function my_wp_nav_menu_objects( $items, $args ) {
+  foreach( $items as &$item ) {
+    $bgcolor = get_field('menu_bgcolor', $item);
+    $menu_name = $item->title;
+    if( $bgcolor ) {
+      $item->title = '<span style="background-color:'.$bgcolor.'">'.$menu_name.'</span>';
+    } else {
+      $item->title = '<span>'.$menu_name.'</span>';
+    }
+  }
+  return $items;
+}
+

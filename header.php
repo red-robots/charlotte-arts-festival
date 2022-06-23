@@ -37,8 +37,31 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 </head>
 <body <?php body_class();?>>
     <a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
-    <span id="mobile-menu"><span class="bar"></span></span>
+    <span id="mobile-menu" class="mobile-menu"><span class="bar"></span></span>
 
+    <?php 
+    /* MOBILE NAVIGATION */
+    if ( has_nav_menu( 'primary' ) ) { ?>
+    <div id="site-navigation" class="navigation-wrapper">
+      <nav id="navigation" class="main-navigation" role="navigation">
+        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'primary-menu') ); ?>
+      </nav>
+    </div>
+
+
+    <?php /* SUB-PAGE NAVIGATION */ ?>
+    <?php if (!is_home() && !is_front_page()) { ?>
+    <nav id="subpage-navigation" class="subpage-navigation" role="navigation">
+      <?php if( get_custom_logo() ) { ?>
+        <div class="branding"><?php the_custom_logo(); ?></div>
+      <?php } ?>
+      <div class="navbar">
+        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'subpage-menu') ); ?>
+      </div>
+    </nav>
+    <?php } ?>
+
+    <?php } ?>
     
 
 

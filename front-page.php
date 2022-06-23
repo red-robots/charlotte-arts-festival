@@ -151,7 +151,7 @@
     <?php include( locate_template('parts/home-plan-visit.php') ); ?>  
 
 
-    <?php include( locate_template('footer_homepage.php') ); ?>  
+    <?php include( locate_template('parts/footer_content.php') ); ?>  
     
 
   </div>

@@ -98,9 +98,17 @@ jQuery(document).ready(function ($) {
       /* Viewing Circular Text */
       if( $('.circular-text').isInViewport() ) {
         $('.circular-text').addClass('viewing');
+        $('#events-title-mobile').addClass('move-down');
       } else {
         $('.circular-text').removeClass('viewing');
+        $('#events-title-mobile').removeClass('move-down');
       }
+
+      // if( $('#upcoming-events').isInViewport() ) {
+      //   $('#events-title-mobile').addClass('move-down');
+      // } else {
+      //   $('#events-title-mobile').removeClass('move-down');
+      // }
 
     });
 
