@@ -18,8 +18,11 @@ get_header(); ?>
     $header_image = get_field('header_image');
     $header_bg = ($header_image) ? ' style="background-image:url('.$header_image['url'].')"' : '';
   ?>
+
+    
+
     <header class="page-header"<?php echo $header_bg ?>>
-      <h1 class="page-title"><span class="rotated"><?php the_title(); ?></span></h1>
+      <h1 class="page-title"><span class="animated"><span class="rotated"><?php the_title(); ?></span></span></h1>
     </header>
 
 
