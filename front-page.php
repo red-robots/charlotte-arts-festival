@@ -301,17 +301,60 @@
           owl.owlCarousel({
             loop:loopStat,
             margin:20,
-            items:4,
-            nav:true
+            nav:true,
+            responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:2
+              },
+              1000:{
+                  items:4
+              }
+            }
           });
         }
         
+      });
+
+
+      $('select#filterEventType').on('change',function(){
+        $('#filterByDate').val('*');
+        $('#upcoming_events_carousel').addClass('filtered');
+        var selectedType = $(this).val();
+        if(selectedType=='*') {
+          $('#term-all').trigger('click');
+        } else {
+          var filterByType = '.term-'+selectedType;
+          owl.owlcarousel2_filter( filterByType );
+          owl.owlCarousel('destroy');
+          var count = $(filterByType).length;
+          let loopStat = (count>3) ? true : false;
+          owl.owlCarousel({
+            loop:loopStat,
+            margin:20,
+            nav:true,
+            responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:2
+              },
+              1000:{
+                  items:4
+              }
+            }
+          });
+        }
       });
         
 
       $('select#filterByDate').on('change',function(){
         $('#upcoming_events_carousel').addClass('filtered');
         var selectedDate = $(this).val();
+        $('#filterEventType').val('*');
         if(selectedDate=='*') {
           $('#term-all').trigger('click');
         } else {
@@ -323,8 +366,18 @@
           owl.owlCarousel({
             loop:loopStat,
             margin:20,
-            items:4,
-            nav:true
+            nav:true,
+            responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:2
+              },
+              1000:{
+                  items:4
+              }
+            }
           });
         }
       });

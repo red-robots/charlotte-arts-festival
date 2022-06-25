@@ -16,6 +16,23 @@
  * @see tribe_get_event() For the format of the event object.
  */
 ?>
+
+<?php  
+$event_id = get_the_ID();
+$terms = wp_get_post_terms( $event_id, Tribe__Events__Main::TAXONOMY );
+$term = (isset($terms[0]) && $terms[0]) ? $terms[0] : '';
+$term_id = (isset($term->term_id) && $term->term_id) ? $term->term_id : '';
+$term_name = (isset($term->name) && $term->name) ? $term->name : '';
+$term_slug = (isset($term->slug) && $term->slug) ? $term->slug : '';
+$term_class = ($term_slug) ? ' term-'.$term_slug : '';
+$term_link = ($term) ? get_term_link($term) : '';
+$color = get_field('category_color', $term);
+$catColor = ($color) ? $color:'#FFF';
+?>
+
+<?php if ($term) { ?>
+<div class="category"><a href="<?php echo $term_link ?>" style="color:<?php echo $catColor ?>"><?php echo $term_name ?></a></div>  
+<?php } ?>
 <h3 class="tribe-events-calendar-list__event-title tribe-common-h6 tribe-common-h4--min-medium">
 	<a
 		href="<?php echo esc_url( $event->permalink ); ?>"

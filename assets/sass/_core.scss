@@ -2826,11 +2826,23 @@ body.post-type-archive-tribe_events {
       color: #FFF;
     }
   }
+  .tribe-events-calendar-list__month-separator-text {
+    font-family: $font_secondary;
+    font-weight: normal;
+    font-size: 20px;
+  }
+  .tribe-events-calendar-list__event-datetime-wrapper.tribe-common-b2 {
+    margin: 0 0;
+  }
   .tribe-events-calendar-list__event-datetime {
     color: #FFF;
   }
+  .tribe-events-calendar-list__event-featured-image-wrapper.tribe-common-g-col {
+    margin-bottom: 10px;
+  }
   .tribe-events-calendar-list__event-featured-image-wrapper {
     padding-bottom: 0!important;
+    
     a, img {
       display: block;
       width: 100%;
@@ -2883,6 +2895,16 @@ body.post-type-archive-tribe_events {
   .tribe-events-c-top-bar__nav-list a,
   .tribe-common-c-svgicon {
     filter: invert(1);
+  }
+  .category {
+    a {
+      display: inline-block;
+      font-size: 16px;
+      line-height:1.1;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
 }
 
