@@ -526,3 +526,13 @@ function my_wp_nav_menu_objects( $items, $args ) {
   return $items;
 }
 
+
+if( function_exists('acf_add_options_page') ) {    
+  acf_add_options_sub_page(array(
+    'page_title'     => 'Events Page Options',
+    'menu_title'    => 'Events Page Options',
+    'parent_slug'    => 'edit.php?post_type=tribe_events',
+  ));
+}
+
+

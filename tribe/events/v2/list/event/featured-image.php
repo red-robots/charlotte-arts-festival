@@ -26,7 +26,7 @@ if ( $event->thumbnail->exists ) { ?>
 		tabindex="-1"
 	>
 		<span class="thumbnail" style="background-image:url('<?php echo esc_url( $event->thumbnail->full->url ); ?>')"></span>
-    <img src="<?php echo IMAGES_URL ?>/square.png" alt="" class="helper">
+    <img src="<?php echo IMAGES_URL ?>/rectangle-lg.png" alt="" class="helper">
 	</a>
 </div>
 <?php } else { ?>
@@ -38,7 +38,7 @@ if ( $event->thumbnail->exists ) { ?>
     class="tribe-events-calendar-list__event-featured-image-link"
     tabindex="-1"
   >
-    <img src="<?php echo IMAGES_URL ?>/square.png" alt="" class="helper">
+    <img src="<?php echo IMAGES_URL ?>/rectangle-lg.png" alt="" class="helper">
   </a>
 </div>
 <?php } ?>

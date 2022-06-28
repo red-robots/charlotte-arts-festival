@@ -5,6 +5,24 @@
  */
 jQuery(document).ready(function ($) {  
 
+  var swiper = new Swiper(".generic-slider", {
+    slidesPerView: 1,
+    direction: "horizontal",
+    loop: true,
+    autoplay: {
+      delay: 8000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    }
+  });
+
   // $('.grid').masonry({
   //   itemSelector: '.grid-item',
   //   columnWidth: '.grid-sizer',

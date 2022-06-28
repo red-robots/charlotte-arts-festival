@@ -38,6 +38,15 @@ function bellaworks_scripts() {
     true 
   );
 
+  if( is_home() || is_front_page() ) {
+    wp_enqueue_script( 
+      'circletype', 
+      get_template_directory_uri() . '/assets/js/vendor/circletype.min.js', 
+      array(), '20220601', 
+      true 
+    );
+  }
+
   wp_enqueue_script( 
 		'bellaworks-custom', 
 		get_template_directory_uri() . '/assets/js/custom.js?v=1.0', 

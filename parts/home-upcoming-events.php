@@ -133,11 +133,12 @@ if($events) {
                 $et = str_replace(':00','',$end_time);
                 $times = ( array_filter(array($st,$et)) ) ? implode(' &ndash; ',array_filter(array($st,$et))) : '';
                 if($event_dates) {
-                  $event_dates .= ' | ' . $times;
+                  $event_dates .= ' <span>|</span> ' . $times;
                 } 
               }
-              $venue = tribe_get_venue($event_id);
               $event_start_format = tribe_get_start_date($event_id,null,'m.d.Y');
+              $venue = tribe_get_venue($event_id);
+              
               ?>
               <div data-start="<?php echo $event_start_format ?>" data-termid="<?php echo $term_id ?>" data-term="<?php echo $term_slug ?>" class="item event project  upcoming-event-info<?php echo $term_class ?>">
                 <a href="<?php echo $pagelink ?>" class="image">

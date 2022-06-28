@@ -28,10 +28,12 @@ $term_class = ($term_slug) ? ' term-'.$term_slug : '';
 $term_link = ($term) ? get_term_link($term) : '';
 $color = get_field('category_color', $term);
 $catColor = ($color) ? $color:'#FFF';
+$catColor2 = ($color) ? $color:'#000';
+$firstCharacter = ($term_name) ? strtoupper(substr($term_name, 0, 1)) : '';
 ?>
 
 <?php if ($term) { ?>
-<div class="category"><a href="<?php echo $term_link ?>" style="color:<?php echo $catColor ?>"><?php echo $term_name ?></a></div>  
+<span class="term-symbol" style="background-color:<?php echo $catColor2 ?>;"><b><?php echo $firstCharacter ?></b></span>
 <?php } ?>
 <h3 class="tribe-events-calendar-list__event-title tribe-common-h6 tribe-common-h4--min-medium">
 	<a
@@ -46,3 +48,6 @@ $catColor = ($color) ? $color:'#FFF';
 		?>
 	</a>
 </h3>
+<?php if ($term) { ?>
+  <div class="category"><a href="<?php echo $term_link ?>" style="color:<?php echo $catColor ?>"><?php echo $term_name ?></a></div>  
+<?php } ?>
