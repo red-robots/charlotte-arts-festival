@@ -72,5 +72,15 @@ jQuery(document).ready(function ($) {
   }
 
   
+  if( $('h3.tribe-events-calendar-list__event-title .list-mode-term-symbol').length ) {
+    $('h3.tribe-events-calendar-list__event-title .list-mode-term-symbol').each(function(){
+      var target = $(this);
+      var parent = $(this).parents('.tribe-events-calendar-list__event-row');
+      if( parent.find('a.tribe-events-calendar-list__event-featured-image-link').length ) {
+        var featuredImage = parent.find('a.tribe-events-calendar-list__event-featured-image-link');
+        target.appendTo(featuredImage);
+      }
+    });
+  }
 
 }); 

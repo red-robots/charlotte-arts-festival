@@ -25,19 +25,8 @@ $image_url = $event->thumbnail->exists ? $event->thumbnail->full->url : $placeho
 		title="<?php echo esc_attr( get_the_title( $event ) ); ?>"
 		rel="bookmark"
 		class="tribe-events-pro-photo__event-featured-image-link"
-	>
-		<img
-			src="<?php echo esc_url( $image_url ); ?>"
-			<?php if ( ! empty( $event->thumbnail->srcset ) ) : ?>
-				srcset="<?php echo esc_attr( $event->thumbnail->srcset ); ?>"
-			<?php endif; ?>
-			<?php if ( ! empty( $event->thumbnail->alt ) ) : ?>
-				alt="<?php echo esc_attr( $event->thumbnail->alt ); ?>"
-			<?php endif; ?>
-			<?php if ( ! empty( $event->thumbnail->title ) ) : ?>
-				title="<?php echo esc_attr( $event->thumbnail->title ); ?>"
-			<?php endif; ?>
-			class="tribe-events-pro-photo__event-featured-image"
-		/>
+	  >
+    <span class="thumbnail" style="background-image:url('<?php echo esc_url( $image_url ); ?>')"></span>
+    <img src="<?php echo IMAGES_URL ?>/rectangle-lg.png" alt="" class="helper">
 	</a>
 </div>

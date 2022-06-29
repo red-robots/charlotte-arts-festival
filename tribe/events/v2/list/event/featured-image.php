@@ -16,29 +16,19 @@
  * @see tribe_get_event() For the format of the event object.
  */
 
-if ( $event->thumbnail->exists ) { ?>
+if ( ! $event->thumbnail->exists ) {
+	return;
+}
+?>
 <div class="tribe-events-calendar-list__event-featured-image-wrapper tribe-common-g-col">
 	<a
-		href="<?php echo esc_url( $event->permalink ); ?>"
-		title="<?php echo esc_attr( $event->title ); ?>"
-		rel="bookmark"
-		class="tribe-events-calendar-list__event-featured-image-link"
-		tabindex="-1"
-	>
-		<span class="thumbnail" style="background-image:url('<?php echo esc_url( $event->thumbnail->full->url ); ?>')"></span>
-    <img src="<?php echo IMAGES_URL ?>/rectangle-lg.png" alt="" class="helper">
-	</a>
-</div>
-<?php } else { ?>
-<div class="tribe-events-calendar-list__event-featured-image-wrapper tribe-common-g-col no-image">
-  <a
     href="<?php echo esc_url( $event->permalink ); ?>"
     title="<?php echo esc_attr( $event->title ); ?>"
     rel="bookmark"
     class="tribe-events-calendar-list__event-featured-image-link"
     tabindex="-1"
-  >
+  > 
+    <span class="thumbnail" style="background-image:url('<?php echo esc_url( $event->thumbnail->full->url ); ?>')"></span>
     <img src="<?php echo IMAGES_URL ?>/rectangle-lg.png" alt="" class="helper">
   </a>
 </div>
-<?php } ?>

@@ -31,7 +31,7 @@ $header_image = get_field('events_header_image','option');
 $header_bg = ($header_image) ? ' style="background-image:url('.$header_image['url'].')"' : '';
 $custom_page_title = get_field('events_page_title','option');
 ?>
-<header class="page-header"<?php echo $header_bg ?>>
+<header class="page-header list-mode"<?php echo $header_bg ?>>
   <h1 class="page-title"><span class="animated"><span class="rotated"><?php echo ($custom_page_title) ? $custom_page_title : 'Events' ?></span></span></h1>
 </header>
 <div

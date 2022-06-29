@@ -23,7 +23,7 @@ $event_classes = tribe_get_post_class( [ 'tribe-events-calendar-list__event', 't
 ?>
 <div <?php tribe_classes( $container_classes ); ?>>
 
-	<?php // $this->template( 'list/event/date-tag', [ 'event' => $event ] ); ?>
+	<?php $this->template( 'list/event/date-tag', [ 'event' => $event ] ); ?>
 
 	<div class="tribe-events-calendar-list__event-wrapper tribe-common-g-col">
 		<article <?php tribe_classes( $event_classes ) ?>>
@@ -32,13 +32,13 @@ $event_classes = tribe_get_post_class( [ 'tribe-events-calendar-list__event', 't
 			<div class="tribe-events-calendar-list__event-details tribe-common-g-col">
 
 				<header class="tribe-events-calendar-list__event-header">
-          <?php $this->template( 'list/event/title', [ 'event' => $event ] ); ?>
-					<?php $this->template( 'list/event/date', [ 'event' => $event ] ); ?>
+					<?php $this->template( 'list/event/title', [ 'event' => $event ] ); ?>
+          <?php $this->template( 'list/event/date', [ 'event' => $event ] ); ?>
 					<?php $this->template( 'list/event/venue', [ 'event' => $event ] ); ?>
 				</header>
 
-				<?php //$this->template( 'list/event/description', [ 'event' => $event ] ); ?>
-				<?php //$this->template( 'list/event/cost', [ 'event' => $event ] ); ?>
+				<?php $this->template( 'list/event/description', [ 'event' => $event ] ); ?>
+				<?php $this->template( 'list/event/cost', [ 'event' => $event ] ); ?>
 
 			</div>
 		</article>
