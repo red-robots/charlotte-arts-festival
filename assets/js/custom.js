@@ -87,12 +87,6 @@ jQuery(document).ready(function ($) {
     var parent = $(this).parents('.gfield');
     var str = $(this).val().trim().replace('/\s+/g','');
     parent.find('.gfield_label').addClass('active');
-
-    // if(str) {
-    //   parent.find('.gfield_label').addClass('active');
-    // } else {
-    //   parent.find('.gfield_label').removeClass('active');
-    // }
   });
 
   $('.contact-form-section .ginput_container input, .ginput_container textarea').on('focusout blur',function(){

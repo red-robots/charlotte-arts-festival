@@ -107,11 +107,12 @@ $catColor = ($color) ? $color:'#FFF';
 <div class="single-main-wrap">
   <div id="tribe-events-content" class="tribe-events-single">
 
-    <?php include( locate_template('parts/gallery-slider.php') ); ?>
-
-
   	<!-- Notices -->
   	<?php tribe_the_notices() ?>
+
+    <div class="gallery-slider-content">
+      <?php include( locate_template('parts/gallery-slider.php') ); ?>
+    </div>
 
   	<?php  //echo $title; ?>
 
@@ -142,25 +143,27 @@ $catColor = ($color) ? $color:'#FFF';
 
   			<!-- Event content -->
   			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>
-  			<div class="tribe-events-single-event-description tribe-events-content">
-  				<?php the_content(); ?>
-  			</div>
+        <div class="tribe-events-single-event-description-wrap">
+    			<div class="tribe-events-single-event-description tribe-events-content">
+    				<?php the_content(); ?>
+    			</div>
+        </div>
   			<!-- .tribe-events-single-event-description -->
   			<?php do_action( 'tribe_events_single_event_after_the_content' ) ?>
 
   			<!-- Event meta -->
-  			<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
-  			<?php 
-          ob_start();
-            tribe_get_template_part( 'modules/meta' ); 
-          $meta_content = ob_get_contents();
-          ob_end_clean();
-          $meta_content = str_replace('<h2 class="tribe-events-single-section-title">Organizer</h2>','<h2 class="tribe-events-single-section-title">Artist</h2>',$meta_content);
-          $meta_content = str_replace('View Organizer Website','View Artist Website',$meta_content);
-          echo $meta_content;
-        ?>
 
-  			<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
+        <div class="tribe-meta-wrapper">
+          <div class="tribe-meta-inner">
+      			<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
+      			<?php tribe_get_template_part( 'modules/meta' ); ?>
+
+
+  			   <?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
+
+          </div>
+        </div>
+
   		</div> <!-- #post-x -->
   		<?php if ( get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option( 'showComments', false ) ) comments_template() ?>
   	<?php endwhile; ?>
