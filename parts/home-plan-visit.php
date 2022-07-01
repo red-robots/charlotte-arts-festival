@@ -3,20 +3,8 @@
   $ctaLink = (isset($cta['url']) && $cta['url']) ? $cta['url'] : 'javascript:void(0)';
   $ctaText = (isset($cta['title']) && $cta['title']) ? $cta['title'] : '';
   $ctaTarget = (isset($cta['target']) && $cta['target']) ? $cta['target'] : '_self';
-
-  $leftcol = get_field('pyv_leftcol');
-  $leftcol_large_text = (isset($leftcol['large_text']) && $leftcol['large_text']) ? $leftcol['large_text'] : '';
-  $leftcol_small_text = (isset($leftcol['small_text']) && $leftcol['small_text']) ? $leftcol['small_text'] : '';
-
-  $rightcol = get_field('pyv_rightcol');
-  $rightcol_large_text = (isset($rightcol['large_text']) && $rightcol['large_text']) ? $rightcol['large_text'] : '';
-  $rightcol_small_text = (isset($rightcol['small_text']) && $rightcol['small_text']) ? $rightcol['small_text'] : '';
-
-
   $columns = get_field('pyv_columns');
   $columnTypes = array('leftcol','rightcol');
-
-
 ?>
 <section id="plan-visit-section" class="section plan-visit-section" data-scroll-section data-persistent>
   <?php if ($ctaText && $ctaLink) { ?>
