@@ -5,6 +5,7 @@
  */
 jQuery(document).ready(function ($) {  
 
+
   var swiper = new Swiper(".generic-slider", {
     slidesPerView: 1,
     direction: "horizontal",
