@@ -1,107 +1,47 @@
 <?php get_header(); ?>
 
-<?php  
-  $heroText = get_field('home_hero_text');
-  $heroVideo = get_field('hero_video');
-  $heroDate = get_field('hero_event_date');
-  $hd = ($heroDate) ? date_intervals_info($heroDate) : '';
-  $ctr_Month = (isset($hd['months']) && $hd['months']) ? $hd['months'] : '0';
-  $ctr_Days = (isset($hd['days']) && $hd['days']) ? $hd['days'] : '0';
-  $ctr_Hours = (isset($hd['hours']) && $hd['hours']) ? $hd['hours'] : '0';
-
-  $homeGallery = get_field('home_gallery'); 
-  $gallery_text = get_field('gallery_text'); 
-?>
-  
-  <?php if ( isset($heroVideo['mp4']) || isset($heroVideo['ogg']) ) { ?>
-  <div class="parallax-video-container">
-    <video id="video" autoplay muted loop>
-      <?php if ( isset($heroVideo['mp4']) && ($heroVideo['mp4']) ) { ?>
-        <source src="<?php echo $heroVideo['mp4'] ?>" type="video/mp4">
-      <?php } ?>
-      <?php if ( isset($heroVideo['ogg']) && ($heroVideo['ogg']) ) { ?>
-        <source src="<?php echo $heroVideo['ogg'] ?>" type="video/ogg">
-      <?php } ?>
-      <p>Your browser doesn't support HTML5 video. <a href="<?php echo $video; ?>">Download</a> the video instead.</p>
-    </video>
-  </div>
-  <?php } ?>
-
-  <?php if ( has_nav_menu( 'primary' ) ) { ?>
-  <nav id="desktop-navigation-sticky" class="desktop-navigation-sticky" role="navigation">
-    <?php if( get_custom_logo() ) { ?>
-      <div class="branding"><?php the_custom_logo(); ?></div>
-    <?php } ?>
-    <div class="navbar">
-      <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'desktop-menu-sticky') ); ?>
-    </div>
-  </nav>
-  <?php } ?>
-
   <div class="o-scroll" id="js-scroll" data-scroll-container>
-    
-    <div id="home_banner" class="home_banner_wrap" data-scroll-section>
-      <header id="masthead" class="site-header" role="banner">
-        <div class="wrapper wide">
-          <?php if( get_custom_logo() ) { ?>
-            <span id="site-logo" class="animated fadeInDown">
-              <?php the_custom_logo(); ?>
-            </span>
-          <?php } else { ?>
-            <a href="<?php echo get_site_url() ?>" id="site-logo" class="animated fadeInDown">
-             <img src="<?php echo IMAGES_URL ?>/logo.png" alt="<?php echo get_bloginfo('name') ?>">
-           </a>
-          <?php } ?>
-        </div>  
-      </header>
+    <div id="hero" data-scroll-section>
+        <div class="page-content">
 
-      <?php if ( isset($heroText['top']) || isset($heroText['middle']) ||  isset($heroText['bottom']) ) { ?>
-      <div class="home-banner">
-        <div class="animated-hero-text">
-          <div class="inner">
-            <?php if ( (isset($heroText['top'])) && $heroText['top']) { ?>
-            <div class="t1"><?php echo $heroText['top'] ?></div>
-            <?php } ?>
-            <?php if ( (isset($heroText['middle'])) && $heroText['middle']) { ?>
-            <div class="t2"><?php echo $heroText['middle'] ?></div>
-            <?php } ?>
-            <?php if ( (isset($heroText['bottom'])) && $heroText['bottom']) { ?>
-            <div class="t3" style="animation-delay:.6s"><?php echo $heroText['bottom'] ?></div>
-            <?php } ?>
-          </div>
+            <header id="masthead" class="site-header" role="banner">
+              <div class="wrapper wide">
+                <?php if( get_custom_logo() ) { ?>
+                  <span id="site-logo" class="animated fadeInDown">
+                    <?php the_custom_logo(); ?>
+                  </span>
+                <?php } else { ?>
+                  <a href="<?php echo get_site_url() ?>" id="site-logo" class="animated fadeInDown">
+                   <img src="<?php echo IMAGES_URL ?>/logo.png" alt="<?php echo get_bloginfo('name') ?>">
+                 </a>
+                <?php } ?>
+              </div>  
+            </header>
+
+            
+            <?php include( locate_template('parts/hero.php') ); ?>
+
         </div>
-      </div>
-      <?php } ?>
+    </div>
 
-
-      <?php if ($heroDate) { ?>
-      <div id="countdown" class="animated fadeIn" style="animation-delay:1s">
-        <div id="vline"><div><span></span></div></div>
-        <div class="timer">
-          <div class="counttype month">
-            <div class="text">MONTHS</div>
-            <div class="count"><?php echo $ctr_Month ?></div>
-          </div>
-
-          <div class="counttype days">
-            <div class="text">DAYS</div>
-            <div class="count"><?php echo $ctr_Days ?></div>
-          </div>
-
-          <div class="counttype hours">
-            <div class="text">HOURS</div>
-            <div class="count"><?php echo $ctr_Hours ?></div>
-          </div>
-        </div>
-      </div>
-      <?php } ?>
-    </div>  
-
-
+    <?php 
+      $homeTabs = get_field('home_tabs'); 
+      $homeGallery = get_field('home_gallery'); 
+      $gallery_text = get_field('gallery_text'); 
+    ?>
+    <?php if ($homeTabs) { ?>
+    <div id="tabs-top">
+      <?php include( locate_template('parts/home-tabs.php') ); ?>
+    </div>
+    <?php } ?>
     
-  
+
     <section id="homerow1" class="section c-section -fixed" data-scroll-section data-persistent>
-        
+        <?php if ($homeTabs) { ?>
+          <div class="hometabs-container">
+            <?php include( locate_template('parts/home-tabs.php') ); ?>
+          </div>
+        <?php } ?>
         <div class="full-width blue-section" id="fixed-elements">
           <div class="wrapper wide">
             <div class="flexcol">

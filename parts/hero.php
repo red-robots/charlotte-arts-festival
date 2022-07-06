@@ -9,20 +9,7 @@ $ctr_Hours = (isset($hd['hours']) && $hd['hours']) ? $hd['hours'] : '0';
 
 if($heroVideo || $heroText) { ?>
 <section id="home-hero">
-  <?php if ( isset($heroVideo['mp4']) || isset($heroVideo['ogg']) ) { ?>
-  <div class="video-container">
-    <video id="video" autoplay muted loop id>
-      <?php if ( isset($heroVideo['mp4']) && ($heroVideo['mp4']) ) { ?>
-        <source src="<?php echo $heroVideo['mp4'] ?>" type="video/mp4">
-      <?php } ?>
-      <?php if ( isset($heroVideo['ogg']) && ($heroVideo['ogg']) ) { ?>
-        <source src="<?php echo $heroVideo['ogg'] ?>" type="video/ogg">
-      <?php } ?>
-      <p>Your browser doesn't support HTML5 video. <a href="<?php echo $video; ?>">Download</a> the video instead.</p>
-    </video>
-  </div>
-  <?php } ?>
-  
+
 
   <div id="home-banner" class="home-banner">
 

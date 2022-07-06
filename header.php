@@ -50,16 +50,14 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 
 
     <?php /* SUB-PAGE NAVIGATION */ ?>
-    <?php if (!is_home() && !is_front_page()) { ?>
-    <nav id="subpage-navigation" class="subpage-navigation" role="navigation">
+    <nav id="desktop-navigation" class="desktop-navigation" role="navigation">
       <?php if( get_custom_logo() ) { ?>
         <div class="branding"><?php the_custom_logo(); ?></div>
       <?php } ?>
       <div class="navbar">
-        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'subpage-menu') ); ?>
+        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'desktop-menu') ); ?>
       </div>
     </nav>
-    <?php } ?>
 
     <?php } ?>
     
