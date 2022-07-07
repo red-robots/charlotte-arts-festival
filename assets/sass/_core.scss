@@ -3020,7 +3020,11 @@ body.single-tribe_events {
   }
 
   .tribe-events-single-event-description.tribe-events-content {
+    padding-top: 40px;
     padding-bottom: 40px;
+  }
+  .has-post-thumbnail .tribe-events-single-event-description.tribe-events-content {
+    padding-top: 0;
   }
   .tribe-events-c-subscribe-dropdown {
     display: none;
