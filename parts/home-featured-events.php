@@ -2,11 +2,22 @@
 $event_column_left_image = get_field('event_column_left_image');
 $event_bg_img = ($event_column_left_image) ? ' style="background-image:url('.$event_column_left_image['url'].')"' : '';
 $event_circular_text = get_field('event_circular_text');
-$featuredEvents = tribe_get_events( [
-   'start_date'     => 'now',
-   'posts_per_page' => 10,
-   'featured'       => true,
-] );
+// $featuredEvents = tribe_get_events( [
+//   'start_date'     => 'now',
+//   'posts_per_page' => 10,
+//   'featured'       => true,
+//   'meta_key' => '_EventRecurrence',
+//   'meta_value' => '',
+//   'meta_compare' => '=='
+// ] );
+
+$featuredEvents = tribe_get_events( array(
+  'posts_per_page'    => 10,
+  'start_date'        => 'now',
+  'featured'          => true,
+  'post_parent__in'   => array( 0 )
+) );
+
 $default_color = '';
 $default_firstChar = '';
 if ($featuredEvents) {

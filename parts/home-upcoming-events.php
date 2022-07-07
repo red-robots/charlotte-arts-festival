@@ -31,7 +31,7 @@ if($events) {
   $custom_slide_buttons = '';
   ?>
   <section id="upcoming-events" class="section upcoming-events-section blue-bg" data-scroll-section data-persistent>
-    <div class="section-inner-content" data-scroll data-scroll-speed="3.7">
+    <div class="section-inner-content">
       <?php if ( $section_title ) { ?>
       <header id="upcoming-events-heading" class="section-header">
         <div class="wrapper">
@@ -117,6 +117,8 @@ if($events) {
               $term_id = (isset($term->term_id) && $term->term_id) ? $term->term_id : '';
               $term_slug = (isset($term->slug) && $term->slug) ? $term->slug : '';
               $term_class = ($term_slug) ? ' term-'.$term_slug : '';
+              $firstCharacter = (isset($term->name) && $term->name) ? strtoupper(substr($term->name, 0, 1)) : '';
+
               $color = get_field('category_color', $term);
               $catColor = ($color) ? $color:'#FFF';
 
@@ -141,11 +143,16 @@ if($events) {
               
               ?>
               <div data-start="<?php echo $event_start_format ?>" data-termid="<?php echo $term_id ?>" data-term="<?php echo $term_slug ?>" class="item event project  upcoming-event-info<?php echo $term_class ?>">
-                <a href="<?php echo $pagelink ?>" class="image">
-                  <figure class="img-bg" <?php echo $style ?>>
-                    <img src="<?php echo IMAGES_URL ?>/square.png" alt="" aria-hidden="true" />
-                  </figure>
-                </a>
+                <div class="imagewrap">
+                  <a href="<?php echo $pagelink ?>" class="image">
+                    <figure class="img-bg" <?php echo $style ?>>
+                      <img src="<?php echo IMAGES_URL ?>/square.png" alt="" aria-hidden="true" />
+                    </figure>
+                  </a>
+                  <?php if ($firstCharacter) { ?>
+                  <span class="term-symbol <?php echo ($color) ? 'text-white':'text-dark';?>" style="background:<?php echo $catColor ?>;"><b><?php echo $firstCharacter ?></b></span>
+                  <?php } ?>
+                </div>
                 <h3><a href="<?php echo $pagelink ?>"><?php echo $ev->post_title ?></a></h3>
                 <?php if ($term) { ?>
                 <div class="term" style="color:<?php echo $catColor ?>"><?php echo $term->name ?></div>

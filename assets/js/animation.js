@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {  
 
+    var currentScreenHeight = $(window).height();
+
     /* Insert Main Navigation to Home Banner wrapper */
     if( $('#home_banner').length ) {
       $('#desktop-navigation').appendTo('#home_banner').removeClass('sticky');
@@ -117,6 +119,16 @@ jQuery(document).ready(function ($) {
       } else {
         $('.circular-text').removeClass('viewing');
         $('#events-title-mobile').removeClass('move-down');
+      }
+
+      if( $('#plan-visit-section .inner').isInViewport() ) {
+        if( $('#plan-visit-section').offset().top < currentScreenHeight ) {
+          $('#events-title').addClass('move-up');
+        } else {
+          $('#events-title').removeClass('move-up');
+        }
+      } else {
+        $('#events-title').removeClass('move-up');
       }
 
     });

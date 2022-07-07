@@ -39,7 +39,6 @@
   <?php } ?>
 
   <div class="o-scroll" id="js-scroll" data-scroll-container>
-    
     <div id="home_banner" class="home_banner_wrap" data-scroll-section>
       <header id="masthead" class="site-header" role="banner">
         <div class="wrapper wide">
@@ -133,20 +132,17 @@
     $event_title = get_field('event_column_left_title');
     ?>
     <?php if ($event_title) { ?>
-      <h2 id="events-title" class="rotated-title"><?php echo $event_title ?></h2>
+      <h2 id="events-title" class="rotated-title"><span><?php echo $event_title ?></span></h2>
     <?php } ?>
     <div class="section-outer-wrap section-same-title">
       <?php include( locate_template('parts/home-featured-events.php') ); ?>
       <?php include( locate_template('parts/home-upcoming-events.php') ); ?>
     </div>
       
-
-    <?php include( locate_template('parts/home-plan-visit.php') ); ?>  
-
-
-    <?php include( locate_template('parts/footer_content.php') ); ?>  
-    
-
+    <?php 
+      include( locate_template('parts/home-plan-visit.php') );
+      include( locate_template('parts/footer_content.php') );
+    ?> 
   </div>
 
   <script>
