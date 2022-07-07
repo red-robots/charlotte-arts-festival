@@ -173,3 +173,11 @@ $catColor = ($color) ? $color:'#FFF';
 
   </div><!-- #tribe-events-content -->
 </div>
+
+<script>
+jQuery(document).ready(function($){
+  $('.tribe-events-meta-group-organizer a').each(function(){
+    $(this).attr('target','_blank');
+  });
+});
+</script>

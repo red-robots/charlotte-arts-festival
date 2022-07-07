@@ -536,3 +536,15 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
+function tribe_get_event_website_link_label_default( $label ) {
+  $url = tribe_get_event_website_url();
+  if ( $label === $url ) {
+    $label = 'View Event Website &raquo;';
+  }
+  return $label;
+}
+add_filter( 'tribe_get_event_website_link_label', 'tribe_get_event_website_link_label_default' );
+
+
+
+
