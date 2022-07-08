@@ -23,7 +23,7 @@
 
 $time_format = tribe_get_time_format();
 $display_end_date = $event->dates->start_display->format( 'H:i' ) !== $event->dates->end_display->format( 'H:i' );
-$event_dates = '';
+
 $start = tribe_get_start_date($event,false,'M d');
 $end = tribe_get_end_date($event,false,'M d');
 $start_time = tribe_get_start_time($event,false,'g:ia');

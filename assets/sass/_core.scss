@@ -2986,6 +2986,24 @@ body.post-type-archive-tribe_events {
       }
     }
   }
+
+  .tribe-events-calendar-list {
+    .tribe-events-calendar-list__event-datetime-wrapper,
+    .tribe-events-calendar-list__event-venue {
+      font-family: $font_primary;
+      font-size: 16px;
+      line-height: 1.2;
+      position: relative;
+    }
+    .tribe-event-date {
+      font-size: 16px;
+      line-height: 1.2;
+      color: $primary-color;
+    }
+    .tribe-events-calendar-list__event-venue {
+      top: -8px;
+    }
+  }
 }
 
 .tribe-events-c-nav__list,
