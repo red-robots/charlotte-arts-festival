@@ -63,8 +63,10 @@ $title = apply_filters( 'tribe_events_single_event_title_html', the_title( $befo
 
 $start = tribe_get_start_date($event_id,null,'M d');
 $end = tribe_get_end_date($event_id,null,'M d');
-$start_time = tribe_get_start_date($event_id,null,'g:ia');
-$end_time = tribe_get_end_date($event_id,null,'g:ia');
+// $start_time = tribe_get_start_date($event_id,null,'g:ia');
+// $end_time = tribe_get_end_date($event_id,null,'g:ia');
+$start_time = tribe_get_start_time($event_id,false,'g:ia');
+$end_time = tribe_get_end_time($event_id,false,'g:ia');
 $event_dates = $start;
 if($start!=$end) {
 $event_dates = ( array_filter(array($start,$end)) ) ? implode(' &ndash; ',array_filter(array($start,$end))) : '';
@@ -87,6 +89,16 @@ $term_class = ($term_slug) ? ' term-'.$term_slug : '';
 $term_link = ($term) ? get_term_link($term) : '';
 $color = get_field('category_color', $term);
 $catColor = ($color) ? $color:'#FFF';
+$images = get_field("gallery");
+$has_main_image = 'no-gallery';
+if($images) {
+  $has_main_image = 'has-gallery';
+} else {
+  if( has_post_thumbnail() ) {
+    $has_main_image = 'has-gallery';
+  }
+}
+
 ?>
 
 <header class="single-page-header">
@@ -104,14 +116,20 @@ $catColor = ($color) ? $color:'#FFF';
   </div>
 </header>
 
-<div class="single-main-wrap">
+<div class="single-main-wrap <?php echo $has_main_image; ?>">
   <div id="tribe-events-content" class="tribe-events-single">
 
   	<!-- Notices -->
   	<?php tribe_the_notices() ?>
 
     <div class="gallery-slider-content">
-      <?php include( locate_template('parts/gallery-slider.php') ); ?>
+      <?php if ($images) { ?>
+        <?php include( locate_template('parts/gallery-slider.php') ); ?>
+      <?php } else { ?>
+        <figure class="event-featured-image">
+          <?php the_post_thumbnail(); ?>
+        </figure>
+      <?php } ?>
     </div>
 
   	<?php  //echo $title; ?>
@@ -157,10 +175,7 @@ $catColor = ($color) ? $color:'#FFF';
           <div class="tribe-meta-inner">
       			<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
       			<?php tribe_get_template_part( 'modules/meta' ); ?>
-
-
-  			   <?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
-
+  			     <?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
           </div>
         </div>
 

@@ -43,6 +43,24 @@ if ( is_array( $posts ) && ! empty( $posts ) ) : ?>
     $thumbid = get_post_thumbnail_id($post);
     $img = wp_get_attachment_image_src($thumbid,'large');
     $image_url = ($img) ? $img[0] : '';
+
+    $start = tribe_get_start_date($post,null,'M d');
+    $end = tribe_get_end_date($post,null,'M d');
+    $start_time = tribe_get_start_time($post,false,'g:ia');
+    $end_time = tribe_get_end_time($post,false,'g:ia');
+    $event_dates = $start;
+    if($start!=$end) {
+      $event_dates = ( array_filter(array($start,$end)) ) ? implode(' &ndash; ',array_filter(array($start,$end))) : '';
+    }
+    if($start_time || $end_time) {
+      $st = str_replace(':00','',$start_time);
+      $et = str_replace(':00','',$end_time);
+      $times = ( array_filter(array($st,$et)) ) ? implode(' &ndash; ',array_filter(array($st,$et))) : '';
+      if($event_dates) {
+        $event_dates .= ' <span>|</span> ' . $times;
+      } 
+    }
+    $venue = tribe_get_venue($event_id);
     if($i<=$max_related) { ?>
   	<li>
   		<?php $thumb = ( has_post_thumbnail( $post->ID ) ) ? get_the_post_thumbnail( $post->ID, 'large' ) : '<img src="' . esc_url( trailingslashit( Tribe__Events__Pro__Main::instance()->pluginUrl ) . 'src/resources/images/tribe-related-events-placeholder.png' ) . '" alt="' . esc_attr( get_the_title( $post->ID ) ) . '" />'; ?>
@@ -66,10 +84,14 @@ if ( is_array( $posts ) && ! empty( $posts ) ) : ?>
         <?php } ?>
 
   			<?php
-  				if ( $post->post_type == Tribe__Events__Main::POSTTYPE ) {
-  					echo tribe_events_event_schedule_details( $post );
-  				}
+  				// if ( $post->post_type == Tribe__Events__Main::POSTTYPE ) {
+  				// 	echo tribe_events_event_schedule_details( $post );
+  				// }
   			?>
+        <div class="tribe-event-dates"><?php echo $event_dates ?></div>
+        <?php if ($venue) { ?>
+        <div class="tribe-event-venue"><?php echo $venue ?></div> 
+        <?php } ?>
   		</div>
   	</li>
     <?php } ?>

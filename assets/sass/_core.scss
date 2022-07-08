@@ -38,6 +38,7 @@ body {
   background-color: $primary-color;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
   @include tab {
     font-size: 14px;
   }
@@ -1106,6 +1107,7 @@ figure.viewing {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    @include animateThis(1s);
     @include tab {
       width: 55%;
     }
@@ -1836,6 +1838,10 @@ header.section-title-center {
         overflow: hidden;
         cursor: pointer;
       }
+      figure {
+        margin: 0 0;
+        padding: 0 0;
+      }
       .large-photo-block,figure {
         position: relative;
         z-index: 10;
@@ -2488,6 +2494,8 @@ header.section-title-center {
     width: calc(100% - 80px);
   }
   ul.menu {
+    margin: 0 0;
+    padding: 0 0;
     height: 100%;
     @include flexgroup();
     @include flexbox-justify(space-between);
@@ -2528,7 +2536,10 @@ header.section-title-center {
 }
 .navigation-wrapper,
 .slide-buttons-mobile {display:none;}
-
+.tribe-common {
+  -webkit-font-smoothing: inherit;
+  font-smoothing: inherit;
+}
 // body.post-type-archive-tribe_events {
 //   .tribe-events-view {
 //     background-color: $light_teal;
@@ -2828,6 +2839,8 @@ body.post-type-archive-tribe_events {
     * {
       font-family: $font_primary;
       font-size: 16px;
+      font-weight: 500;
+      color: $darkblue;
     }
     time, span {
       color: $darkblue;
@@ -2845,10 +2858,18 @@ body.post-type-archive-tribe_events {
       display: inline-block;
       text-decoration: none;
       font-size: 16px;
+      font-weight:500;
       line-height: 1.1;
       &:hover {
         opacity: 0.75;
       }
+    }
+  }
+  .tribe-events-calendar-list__event-venue {
+    font-family: $font_primary;
+    * {
+      font-size: 16px;
+      font-weight:500;
     }
   }
 
@@ -3020,11 +3041,12 @@ body.single-tribe_events {
   }
 
   .tribe-events-single-event-description.tribe-events-content {
-    padding-top: 40px;
+    padding-top: 25px;
     padding-bottom: 40px;
   }
-  .has-post-thumbnail .tribe-events-single-event-description.tribe-events-content {
-    padding-top: 0;
+  .no-gallery .tribe-events-single-event-description.tribe-events-content {
+    padding-top: 50px;
+    padding-bottom: 30px;
   }
   .tribe-events-c-subscribe-dropdown {
     display: none;
@@ -3248,13 +3270,20 @@ body.single-tribe_events {
         transform: translateY(-50%);
       }
     }
-    .tribe-related-event-info * {
-      font-family: $font_primary;
-      font-size: 15px;
-      font-weight: bold;
-      line-height: 1.2;
-      color: $darkblue;
-      text-decoration: none;
+    .tribe-related-event-info {
+      * {
+        font-family: $font_primary;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: $darkblue;
+        text-decoration: none;
+      }
+      .tribe-event-dates, 
+      .tribe-event-venue {
+        display: block;
+        width: 100%;
+      }
     }
     .tribe-related-events-title {
       margin: 0 0 10px!important
@@ -3272,6 +3301,20 @@ body.single-tribe_events {
       a {
         font-weight: normal;
       }
+    }
+  }
+
+  .event-featured-image {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    top: -70px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -4269,7 +4312,33 @@ body.home {
       animation-delay: 0.5s;
     }
   }
-
+  &.show-bottom-overlay {
+    
+    background-color: $primary-color;
+    // background-image: url(assets/images/footer-bg.jpg);
+    // background-size: cover;
+    // background-position: bottom;
+    // background-repeat: no-repeat;
+    .parallax-video-container {
+      visibility: hidden;
+    }
+    // .site-footer {
+    //   background-color: transparent;
+    //   background-image: none!important;
+    // }
+    // &:after {
+    //   content:"";
+    //   display: block;
+    //   width: 100%;
+    //   height: 20vh;
+    //   background: $primary-color;
+    //   position: absolute;
+    //   left: 0;
+    //   bottom: 0;
+    //   z-index: 10;
+    // }
+  }
+  
 }
 
 

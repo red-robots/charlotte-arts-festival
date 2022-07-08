@@ -1,4 +1,4 @@
-<?php  if( $images = get_field("gallery") ) { 
+<?php  if( isset($images) && $images ) { 
   $count = count($images); 
   $slideClass = ($count==1) ? 'static-slide':'slideshow generic-slider';
   ?>

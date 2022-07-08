@@ -45,6 +45,18 @@ function bellaworks_scripts() {
       array(), '20220601', 
       true 
     );
+    wp_enqueue_script( 
+      'gsap', 
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js', 
+      array(), '20220601', 
+      true 
+    );
+    wp_enqueue_script( 
+      'ScrollTrigger', 
+      'https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.5/ScrollTrigger.min.js', 
+      array(), '20220601', 
+      true 
+    );
   }
 
   wp_enqueue_script( 

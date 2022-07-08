@@ -19,119 +19,127 @@ jQuery(document).ready(function ($) {
         document.documentElement.classList.add('is-ready');
     },300)
 
-    let options = {
+
+
+      let options = {
         el: document.querySelector('#js-scroll'),
         smooth: true,
         getSpeed: true,
         getDirection: true,
         repeat: true
-    }
+      } 
 
-    const scroll = new LocomotiveScroll(options);
+      const scroll = new LocomotiveScroll(options);
 
-    scroll.on('scroll', func => {
+      scroll.on('scroll', func => {
 
-      var fixeElHeight = $('#imagecol').height() - 200;
+        var fixeElHeight = $('#imagecol').height() - 200;
 
-      $('#fixed-elements').css('height', fixeElHeight + 'px' );
+        $('#fixed-elements').css('height', fixeElHeight + 'px' );
 
-      $('.grid-item figure').each(function(){
-        if ($(this).isInViewport()) {
-          $(this).addClass('viewing');
-        } else {
-          $(this).removeClass('viewing');
-        }
-      });
-
-      $('.section').each(function(){
-        if ($(this).isInViewport()) {
-          $(this).addClass('viewing');
-        } else {
-          $(this).removeClass('viewing');
-        }
-      });
-
-
-
-      if ($('.section#events-section .circular-text').isInViewport()) {
-        $('#homerow1').addClass('adjust-caption');
-      } else {
-        $('#homerow1').removeClass('adjust-caption');
-      }
-
-      /* Viewing Squiggy */
-      $('.squiggy').each(function(){
-        if ($(this).isInViewport()) {
-          $(this).addClass('viewing');
-        } else {
-          $(this).removeClass('viewing');
-        }
-      });
-
-      if( $('.featured-events').isInViewport() ) {
-        $('.featured-events').addClass('viewing');
-        //$('#events-title').addClass('sticky');
-      } else {
-        $('.featured-events').removeClass('viewing');
-        //$('#events-title').removeClass('sticky');
-      }
-
-      if( $('.featured-events').isInViewport() || $('.upcoming-events-section').isInViewport() ) {
-        $('#events-title').addClass('animated fadeIn sticky');
-      } else {
-        $('#events-title').removeClass('animated fadeIn sticky');
-      }
-
-      var halfscreen = '-' + Math.round( $(window).height() / 3 );
-      var haflScreenHero = parseInt(halfscreen);
-      
-       // if( $('#home_banner #desktop-navigation').hasClass('fadeOut') ) {
-
-       //  } else {
-       //    $('#desktop-navigation-sticky').removeClass('show fadeIn');
-       //  }
-
-      if($('#home_banner').offset().top < haflScreenHero) {
-        $('#home_banner #desktop-navigation').addClass('fadeOut');
-        //$('#desktop-navigation-sticky').addClass('show animated fadeInDown');
-      } else {
-        $('#home_banner #desktop-navigation').removeClass('fadeOut');
-      }
-
-      if( $('#home_banner').length ) {
-        if( $('#homerow1').isInViewport() || $('#plan-visit-section').isInViewport() || $('#upcoming-events').isInViewport() || $('.site-footer').isInViewport() ) {
-          if($('#home_banner').offset().top < haflScreenHero) {
-            $('#home_banner #desktop-navigation').addClass('animated fadeOut').removeClass('fadeIn');
-            $('#desktop-navigation-sticky').addClass('show animated fadeInDown');
+        $('.grid-item figure').each(function(){
+          if ($(this).isInViewport()) {
+            $(this).addClass('viewing');
           } else {
-            $('#home_banner #desktop-navigation').removeClass('fadeOut').addClass('fadeIn');
+            $(this).removeClass('viewing');
           }
+        });
+
+        $('.section').each(function(){
+          if ($(this).isInViewport()) {
+            $(this).addClass('viewing');
+          } else {
+            $(this).removeClass('viewing');
+          }
+        });
+
+
+
+        if ($('.section#events-section .circular-text').isInViewport()) {
+          $('#homerow1').addClass('adjust-caption');
         } else {
-          $('#desktop-navigation-sticky').removeClass('show animated fadeInDown');
+          $('#homerow1').removeClass('adjust-caption');
         }
-      }
+
+        /* Viewing Squiggy */
+        $('.squiggy').each(function(){
+          if ($(this).isInViewport()) {
+            $(this).addClass('viewing');
+          } else {
+            $(this).removeClass('viewing');
+          }
+        });
+
+        if( $('.featured-events').isInViewport() ) {
+          $('.featured-events').addClass('viewing');
+          //$('#events-title').addClass('sticky');
+        } else {
+          $('.featured-events').removeClass('viewing');
+          //$('#events-title').removeClass('sticky');
+        }
+
+        if( $('.featured-events').isInViewport() || $('.upcoming-events-section').isInViewport() ) {
+          $('#events-title').addClass('animated fadeIn sticky');
+        } else {
+          $('#events-title').removeClass('animated fadeIn sticky');
+        }
+
+        var halfscreen = '-' + Math.round( $(window).height() / 3 );
+        var haflScreenHero = parseInt(halfscreen);
+    
+
+        if($('#home_banner').offset().top < haflScreenHero) {
+          $('#home_banner #desktop-navigation').addClass('fadeOut');
+          //$('#desktop-navigation-sticky').addClass('show animated fadeInDown');
+        } else {
+          $('#home_banner #desktop-navigation').removeClass('fadeOut');
+        }
+
+        if( $('#home_banner').length ) {
+          if( $('#homerow1').isInViewport() || $('#plan-visit-section').isInViewport() || $('#upcoming-events').isInViewport() || $('.site-footer').isInViewport() ) {
+            if($('#home_banner').offset().top < haflScreenHero) {
+              $('#home_banner #desktop-navigation').addClass('animated fadeOut').removeClass('fadeIn');
+              $('#desktop-navigation-sticky').addClass('show animated fadeInDown');
+            } else {
+              $('#home_banner #desktop-navigation').removeClass('fadeOut').addClass('fadeIn');
+            }
+          } else {
+            $('#desktop-navigation-sticky').removeClass('show animated fadeInDown');
+          }
+        }
 
 
-      /* Viewing Circular Text */
-      if( $('.circular-text').isInViewport() ) {
-        $('.circular-text').addClass('viewing');
-        $('#events-title-mobile').addClass('move-down');
-      } else {
-        $('.circular-text').removeClass('viewing');
-        $('#events-title-mobile').removeClass('move-down');
-      }
+        /* Viewing Circular Text */
+        if( $('.circular-text').isInViewport() ) {
+          $('.circular-text').addClass('viewing');
+          $('#events-title-mobile').addClass('move-down');
+        } else {
+          $('.circular-text').removeClass('viewing');
+          $('#events-title-mobile').removeClass('move-down');
+        }
 
-      if( $('#plan-visit-section .inner').isInViewport() ) {
-        if( $('#plan-visit-section').offset().top < currentScreenHeight ) {
-          $('#events-title').addClass('move-up');
+        if( $('#plan-visit-section .inner').isInViewport() ) {
+          if( $('#plan-visit-section').offset().top < currentScreenHeight ) {
+            $('#events-title').addClass('move-up');
+          } else {
+            $('#events-title').removeClass('move-up');
+          }
         } else {
           $('#events-title').removeClass('move-up');
         }
-      } else {
-        $('#events-title').removeClass('move-up');
-      }
 
-    });
+        if( $('.site-footer').isInViewport() ) {
+          $('body').addClass('show-bottom-overlay');
+        } else {
+          $('body').removeClass('show-bottom-overlay');
+        }
+
+      });
+
+
+    // $(window).on('orientationchange resize',function(){
+    //   activate_locomotive();
+    // });
 
     
 
@@ -192,22 +200,6 @@ jQuery(document).ready(function ($) {
         $('#vline').height(vline+'px');
       }
     }
-
-
-    
-
-
-
-    // $('body').on('scroll', function () {
-    //   console.log( $(window).scrollTop() );
-
-    //   if ($(window).scrollTop() > 200) {
-    //     $('.desktop-navigation').addClass('sticky');
-    //   } else {
-    //     $('.desktop-navigation').removeClass('sticky');
-    //   }
-    // });
-    
     
 
 }); 

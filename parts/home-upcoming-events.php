@@ -124,8 +124,11 @@ if($events) {
 
               $start = tribe_get_start_date($ev,null,'M d');
               $end = tribe_get_end_date($ev,null,'M d');
-              $start_time = tribe_get_start_date($ev,null,'g:ia');
-              $end_time = tribe_get_end_date($ev,null,'g:ia');
+              // $start_time = tribe_get_start_date($ev,null,'g:ia');
+              // $end_time = tribe_get_end_date($ev,null,'g:ia');
+
+              $start_time = tribe_get_start_time($ev,false,'g:ia');
+              $end_time = tribe_get_end_time($ev,false,'g:ia');
               $event_dates = $start;
               if($start!=$end) {
                 $event_dates = ( array_filter(array($start,$end)) ) ? implode(' &ndash; ',array_filter(array($start,$end))) : '';

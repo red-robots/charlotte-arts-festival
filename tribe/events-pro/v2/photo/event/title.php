@@ -17,6 +17,7 @@
  */
 ?>
 <?php  
+//$ev = get_post();
 $event_id = get_the_ID();
 $terms = wp_get_post_terms( $event_id, Tribe__Events__Main::TAXONOMY );
 $term = (isset($terms[0]) && $terms[0]) ? $terms[0] : '';

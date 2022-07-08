@@ -40,7 +40,7 @@ if ($featuredEvents) {
   <?php } ?>
   <div class="section-content">
     <div class="flex-wrap">
-      <div class="flexcol fleft"<?php echo $event_bg_img ?>></div>
+      <div id="featured_event_imagecol" class="flexcol fleft"<?php echo $event_bg_img ?>></div>
       <div class="flexcol fright">
 
         <div class="circular-text">
@@ -60,7 +60,7 @@ if ($featuredEvents) {
             <div class="swiper-wrapper">
 
               
-              <?php foreach ($featuredEvents as $ev) { 
+              <?php $ctr=1; foreach ($featuredEvents as $ev) { 
                 $event_id = $ev->ID;
                 $pagelink = get_permalink($event_id);
                 $excerpt = ($ev->post_content) ? shortenText(strip_tags($ev->post_content),120,' ',"...") : ''; 
@@ -72,8 +72,11 @@ if ($featuredEvents) {
                 $catColor = ($color) ? $color:'#CCC';
                 $start = tribe_get_start_date($ev,null,'M d');
                 $end = tribe_get_end_date($ev,null,'M d');
-                $start_time = tribe_get_start_date($ev,null,'g:ia');
-                $end_time = tribe_get_end_date($ev,null,'g:ia');
+                // $start_time = tribe_get_start_date($ev,null,'g:ia');
+                // $end_time = tribe_get_end_date($ev,null,'g:ia');
+
+                $start_time = tribe_get_start_time($ev,false,'g:ia');
+                $end_time = tribe_get_end_time($ev,false,'g:ia');
                 $event_dates = $start;
                 if($start!=$end) {
                   $event_dates = ( array_filter(array($start,$end)) ) ? implode(' &ndash; ',array_filter(array($start,$end))) : '';
@@ -87,9 +90,13 @@ if ($featuredEvents) {
                   } 
                 }
                 $venue = tribe_get_venue($event_id);
+                $thumbnail_id = get_post_thumbnail_id($event_id);
+                $img = wp_get_attachment_image_src($thumbnail_id,'full');
+                $img_src = ($img) ? $img[0]:'';
+                $first_slide = ($ctr==1) ? ' first':'';
                 ?>
                 <div class="swiper-slide">
-                  <div class="event" data-event-type="<?php echo $firstCharacter ?>" data-color="<?php echo ($categoryName) ? $catColor : 'transparent' ?>">
+                  <div class="event <?php echo $first_slide ?>" data-image="<?php echo $img_src ?>" data-event-type="<?php echo $firstCharacter ?>" data-color="<?php echo ($categoryName) ? $catColor : 'transparent' ?>">
                     <h2 class="title"><?php echo $ev->post_title ?></h2>
                     <?php if ( $categoryName ) { ?>
                       <div class="tag"><span style="color:<?php echo $catColor ?>"><?php echo $categoryName ?></span></div>
@@ -115,7 +122,7 @@ if ($featuredEvents) {
                     </div>
                   </div>
                 </div>
-              <?php } ?>
+              <?php $ctr++; } ?>
               
 
             </div>
