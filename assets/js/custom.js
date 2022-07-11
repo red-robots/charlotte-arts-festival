@@ -5,6 +5,7 @@
  */
 jQuery(document).ready(function ($) {  
 
+  $('select.nice-select').niceSelect();
 
   var swiper = new Swiper(".generic-slider", {
     slidesPerView: 1,

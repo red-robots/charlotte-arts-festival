@@ -1407,20 +1407,53 @@ figure.viewing {
     }
     .by-date {
       .selectwrap {
+        width: 200px;
         display: inline-block;
         position: relative;
-        &:before {
-          content: "";
-          display: block;
-          width: 0;
-          height: 0;
-          border-top: 8px solid #fff;
-          border-left: 6px solid transparent;
-          border-right: 6px solid transparent;
-          position: absolute;
-          top: 8px;
-          right: -22px;
+        
+      }
+      .nice-select {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #FFF;
+        font-size: 20px;
+        padding: 0 0;
+        top: -10px;
+        ul {
+          width: 100%;
+          li {
+            color: #000;
+          }
         }
+        span.current {
+          display: block;
+          width: 150px;
+          position:relative;
+          &:before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 8px solid #fff;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+          }
+        }
+        
+        &:after {
+          display: none;
+        }
+
+        &.open {
+          span.current:before {
+            transform: rotate(180deg);
+          }
+        }
+
       }
       select {
         background-color: transparent;

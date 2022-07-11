@@ -60,6 +60,13 @@ function bellaworks_scripts() {
   }
 
   wp_enqueue_script( 
+    'nice-select', 
+    get_template_directory_uri() . '/assets/js/vendor/jquery.nice-select.min.js', 
+    array(), '20220710', 
+    true 
+  );
+
+  wp_enqueue_script( 
 		'bellaworks-custom', 
 		get_template_directory_uri() . '/assets/js/custom.js', 
 		array(), '20220629', 
