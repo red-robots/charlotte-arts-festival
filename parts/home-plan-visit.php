@@ -5,7 +5,13 @@
   $ctaTarget = (isset($cta['target']) && $cta['target']) ? $cta['target'] : '_self';
   $columns = get_field('pyv_columns');
   $columnTypes = array('leftcol','rightcol');
+
+  $left_text = ( isset($columns['leftcol_large_text']) && $columns['leftcol_large_text'] ) ? $columns['leftcol_large_text'] : '';
+  $right_text = ( isset($columns['rightcol_large_text']) && $columns['rightcol_large_text'] ) ? $columns['rightcol_large_text'] : '';
 ?>
+
+<?php if ( (isset($columns['leftcol_image']) && $columns['leftcol_image']) && (isset($columns['rightcol_image']) && 
+      $columns['rightcol_image']) &&  $left_text && $right_text ) { ?>
 <section id="plan-visit-section" class="section plan-visit-section" data-scroll-section data-persistent>
   <?php if ($ctaText && $ctaLink) { ?>
   <header class="section-title-center green">
@@ -69,3 +75,4 @@
 
   
 </section>
+<?php } ?>
