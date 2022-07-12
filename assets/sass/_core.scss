@@ -3679,9 +3679,16 @@ body.page-template-page-contact {
   }
 }
 
+.hero-image-mobile {
+  display: none;
+}
 
 /* MOBILE RESPONSIVE */
 @include max($midwidth) {
+  .parallax-video-container video,
+  #desktop-navigation-sticky {
+    display: none!important;
+  }
   #desktop-navigation {
     .branding {
       position: relative;
@@ -3691,6 +3698,16 @@ body.page-template-page-contact {
     .navbar {
       display: none;
     }
+  }
+  .hero-image-mobile {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    @include backgroundImage(center);
+    background-color: #000;
   }
   /* MOBILE NAVIGATION */
   .navigation-wrapper {

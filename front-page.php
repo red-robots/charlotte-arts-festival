@@ -11,9 +11,10 @@
 
   $homeGallery = get_field('home_gallery'); 
   $gallery_text = get_field('gallery_text'); 
+  $heroImage = get_field('hero_image_mobile'); 
 ?>
   
-  <?php if ( isset($heroVideo['mp4']) || isset($heroVideo['ogg']) ) { ?>
+  <?php if ( isset($heroVideo['mp4']) || isset($heroVideo['ogg']) || $heroImage ) { ?>
   <div class="parallax-video-container">
     <video id="video" autoplay muted loop>
       <?php if ( isset($heroVideo['mp4']) && ($heroVideo['mp4']) ) { ?>
@@ -24,6 +25,10 @@
       <?php } ?>
       <p>Your browser doesn't support HTML5 video. <a href="<?php echo $video; ?>">Download</a> the video instead.</p>
     </video>
+
+    <?php if ($heroImage) { ?>
+     <div class="hero-image-mobile" style="background-image:url('<?php echo $heroImage['url'] ?>')"></div> 
+    <?php } ?>
   </div>
   <?php } ?>
 
