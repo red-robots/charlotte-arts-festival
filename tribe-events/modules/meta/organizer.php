@@ -16,6 +16,9 @@ $phone = tribe_get_organizer_phone();
 $email = tribe_get_organizer_email();
 $website = tribe_get_organizer_website_link();
 $website_title = tribe_events_get_organizer_website_title();
+if($website) {
+  $website = str_replace('View Organizer Website','View Artist Website',$website);
+}
 ?>
 
 <div class="tribe-events-meta-group tribe-events-meta-group-organizer">

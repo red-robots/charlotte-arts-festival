@@ -56,6 +56,9 @@ $time_title = apply_filters( 'tribe_events_single_event_time_title', __( 'Time:'
 $cost    = tribe_get_formatted_cost();
 $website = tribe_get_event_website_link( $event_id );
 $website_title = tribe_events_get_event_website_title();
+if($website) {
+  $website = str_replace('View Event Website','Get Tickets',$website);
+}
 ?>
 
 <div class="tribe-events-meta-group tribe-events-meta-group-details">
