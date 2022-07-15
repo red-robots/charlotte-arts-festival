@@ -3370,6 +3370,21 @@ body.single-tribe_events {
     }
   }
 
+  .tribe-events-schedule {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 0;
+    padding: 0 0;
+    position: relative;
+    .recurringinfo {
+      margin: 30px 0;
+      background: #FFF;
+    }
+    h2 {
+      display: none!important;
+    }
+  }
+
   @include max(480px) {
     .tribe-events-single-section-title {
       margin-top: 30px;
