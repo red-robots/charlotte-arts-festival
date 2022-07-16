@@ -2511,7 +2511,7 @@ header.section-title-center {
   padding:0 3vw;
   @include flexgroup();
   .branding {
-    width: 70px;
+    width: 150px;
     a {
       display: block;
       width: 100%;
@@ -2525,7 +2525,7 @@ header.section-title-center {
     }
   }
   .navbar {
-    width: calc(100% - 80px);
+    width: calc(100% - 150px);
   }
   ul.menu {
     margin: 0 0;
@@ -3238,9 +3238,9 @@ body.single-tribe_events {
     }
     dd.tribe-organizer-url {
       margin: 2px 0 0;
-      a {
-        font-size: 14px;
-      }
+      // a {
+      //   font-size: 14px;
+      // }
     }
   }
   .tribe-events-meta-group-organizer {
@@ -3382,6 +3382,34 @@ body.single-tribe_events {
     }
     h2 {
       display: none!important;
+    }
+  }
+
+  .tribe-organizer {
+    a {
+      font-weight: bold;
+    }
+  }
+
+  dd.get-tickets-link {
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: $orange;
+      border: 1px solid $orange;
+      padding: 10px 15px 11px;
+      min-width: 150px;
+      text-align: center;
+      border-radius: 100px;
+      color: #fff !important;
+      font-family: $font_secondary;
+      font-size: 15px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #FFF;
+        color: $orange!important;
+      }
     }
   }
 

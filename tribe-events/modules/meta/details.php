@@ -55,9 +55,16 @@ $time_title = apply_filters( 'tribe_events_single_event_time_title', __( 'Time:'
 
 $cost    = tribe_get_formatted_cost();
 $website = tribe_get_event_website_link( $event_id );
-$website_title = tribe_events_get_event_website_title();
+//$website_title = tribe_events_get_event_website_title();
+$website_title = '';
+$websiteLink = '';
 if($website) {
+  $website_str = preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $website, $matchstr);
   $website = str_replace('View Event Website','Get Tickets',$website);
+  $website = str_replace('&rarr;','',$website);
+  if( isset($matchstr[0]) && $matchstr[0] ) {
+    $websiteLink = $matchstr[0][0];
+  }
 }
 ?>
 
@@ -160,25 +167,39 @@ if($website) {
 		?>
 
 		<?php
-		tribe_meta_event_archive_tags(
-			/* Translators: %s: Event (singular) */
-			sprintf(
-				esc_html__( '%s Tags:', 'the-events-calendar' ),
-				tribe_get_event_label_singular()
-			),
-			', ',
-			true
-		);
+    /* TAGS */
+		// tribe_meta_event_archive_tags(
+		// 	/* Translators: %s: Event (singular) */
+		// 	sprintf(
+		// 		esc_html__( '%s Tags:', 'the-events-calendar' ),
+		// 		tribe_get_event_label_singular()
+		// 	),
+		// 	', ',
+		// 	true
+		// );
 		?>
 
-		<?php
-		// Event Website
-		if ( ! empty( $website ) ) : ?>
-			<?php if ( ! empty( $website_title ) ): ?>
-				<dt class="tribe-events-event-url-label"> <?php echo esc_html( $website_title ); ?> </dt>
-			<?php endif; ?>
-			<dd class="tribe-events-event-url"> <?php echo $website; ?> </dd>
-		<?php endif ?>
+    <?php 
+    /* RECURRING EVENT */
+    if ( tribe_is_recurring_event($event_id) ) { 
+      $recurring_link = get_permalink($event_id) . '/all/'; 
+      $info = tribe_events_event_schedule_details( $event_id, '', '' );
+      if($info) {
+        $string = preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $info, $match);
+        $recurring_link = (isset($match[0]) && $match[0]) ? $match[0][0] : '';
+        if($recurring_link) { ?>
+        <dt class="tribe-event-recurring-label">Recurring Event:</dt>
+        <dd class="tribe-event-recurring"><a href="<?php echo $recurring_link ?>" rel="tag">See All</a></dd>
+        <?php } ?>
+      <?php } ?>
+    <?php } ?>
+
+
+    <?php /* GET TICKETS LINK */ ?>
+    <?php if ($websiteLink) { ?>
+      <dd class="tribe-events-event-url get-tickets-link"><a href="<?php echo $websiteLink ?>" target="_blank" rel="external">Get Tickets</a></dd>  
+    <?php } ?>
+		
 
 		<?php do_action( 'tribe_events_single_meta_details_section_end' ); ?>
 	</dl>

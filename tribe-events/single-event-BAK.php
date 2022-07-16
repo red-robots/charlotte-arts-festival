@@ -157,7 +157,17 @@ if($images) {
         <div class="tribe-events-single-event-description-wrap">
     			<div class="tribe-events-single-event-description tribe-events-content">
     				<?php the_content(); ?>
+
+            <?php if ( tribe_events_event_schedule_details($event_id) || tribe_get_cost() ) { ?>
+            <div class="tribe-events-schedule tribe-clearfix">
+              <?php echo tribe_events_event_schedule_details( $event_id, '<h2>', '</h2>' ); ?>
+              <?php if ( tribe_get_cost() ) : ?>
+                <span class="tribe-events-cost"><?php echo tribe_get_cost( null, true ) ?></span>
+              <?php endif; ?>
+            </div>
+            <?php } ?>
     			</div>
+
         </div>
   			<!-- .tribe-events-single-event-description -->
   			<?php do_action( 'tribe_events_single_event_after_the_content' ) ?>
